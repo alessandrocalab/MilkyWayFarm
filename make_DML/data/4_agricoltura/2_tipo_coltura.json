@@ -1,0 +1,52 @@
+[
+    {
+        "NOME_TIPO_COLTURA": "'Grano duro'",
+        "CATEGORIA_COLTURA": "'CERALI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 180
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Mais'",
+        "CATEGORIA_COLTURA": "'CERALI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 120
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Riso'",
+        "CATEGORIA_COLTURA": "'CERALI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 150
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Patata'",
+        "CATEGORIA_COLTURA": "'ORTAGGI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 100
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Pomodoro'",
+        "CATEGORIA_COLTURA": "'ORTAGGI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 90
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Lattuga'",
+        "CATEGORIA_COLTURA": "'ORTAGGI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 45
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Carota'",
+        "CATEGORIA_COLTURA": "'ORTAGGI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 80
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Zucchina'",
+        "CATEGORIA_COLTURA": "'ORTAGGI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 55
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Fagiolo'",
+        "CATEGORIA_COLTURA": "'LEGUMI'",
+        "DURATA_CICLO_COLTURA_GIORNI": 90
+    },
+    {
+        "NOME_TIPO_COLTURA": "'Soia'",
+        "CATEGORIA_COLTURA": "'OLEAGINOSE'",
+        "DURATA_CICLO_COLTURA_GIORNI": 120
+    }
+]

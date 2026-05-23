@@ -1,0 +1,74 @@
+[
+    {
+        "NOME_MISSIONE": "'Ares Supply 01'",
+        "DATA_LANCIO": "DATE '2023-06-01'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2023-06-16'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2023-06-17'",
+        "VOLUME_RIFORNIMENTO_M3": 45.5,
+        "MASSA_RIFORNIMENTO_KG": 12500.0,
+        "BASE_PARTENZA": "'Cape Canaveral'"
+    },
+    {
+        "NOME_MISSIONE": "'Ares Supply 02'",
+        "DATA_LANCIO": "DATE '2023-08-20'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2023-09-04'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2023-09-04'",
+        "VOLUME_RIFORNIMENTO_M3": 52.0,
+        "MASSA_RIFORNIMENTO_KG": 14800.0,
+        "BASE_PARTENZA": "'Cape Canaveral'"
+    },
+    {
+        "NOME_MISSIONE": "'Demetra Cargo 01'",
+        "DATA_LANCIO": "DATE '2024-01-12'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2024-01-27'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2024-01-29'",
+        "VOLUME_RIFORNIMENTO_M3": 38.75,
+        "MASSA_RIFORNIMENTO_KG": 9800.0,
+        "BASE_PARTENZA": "'Spazioporto di Acerra'"
+    },
+    {
+        "NOME_MISSIONE": "'Demetra Cargo 02'",
+        "DATA_LANCIO": "DATE '2024-07-04'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2024-07-19'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2024-07-18'",
+        "VOLUME_RIFORNIMENTO_M3": 60.25,
+        "MASSA_RIFORNIMENTO_KG": 16250.0,
+        "BASE_PARTENZA": "'Spazioporto di Acerra'"
+    },
+    {
+        "NOME_MISSIONE": "'Hermes BioLab 01'",
+        "DATA_LANCIO": "DATE '2025-02-10'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2025-02-25'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2025-02-26'",
+        "VOLUME_RIFORNIMENTO_M3": 28.4,
+        "MASSA_RIFORNIMENTO_KG": 7200.0,
+        "BASE_PARTENZA": "'Tanegashima'"
+    },
+    {
+        "NOME_MISSIONE": "'Hermes BioLab 02'",
+        "DATA_LANCIO": "DATE '2025-09-18'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2025-10-03'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2025-10-04'",
+        "VOLUME_RIFORNIMENTO_M3": 34.6,
+        "MASSA_RIFORNIMENTO_KG": 8500.0,
+        "BASE_PARTENZA": "'Kourou'"
+    },
+    {
+        "NOME_MISSIONE": "'Atlas Storage 01'",
+        "DATA_LANCIO": "DATE '2026-01-15'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2026-01-30'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2026-01-31'",
+        "VOLUME_RIFORNIMENTO_M3": 70.0,
+        "MASSA_RIFORNIMENTO_KG": 18500.0,
+        "BASE_PARTENZA": "'Spazioporto di Acerra'"
+    },
+    {
+        "NOME_MISSIONE": "'Atlas Storage 02'",
+        "DATA_LANCIO": "DATE '2026-03-22'",
+        "DATA_ARRIVO_PREVISTO": "DATE '2026-04-06'",
+        "DATA_ARRIVO_EFFETTIVO": "DATE '2026-04-07'",
+        "VOLUME_RIFORNIMENTO_M3": 64.8,
+        "MASSA_RIFORNIMENTO_KG": 17100.0,
+        "BASE_PARTENZA": "'Cape Canaveral'"
+    }
+]

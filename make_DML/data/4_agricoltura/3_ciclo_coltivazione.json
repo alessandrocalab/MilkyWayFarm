@@ -1,0 +1,152 @@
+[
+    {
+        "DATA_INIZIO": "DATE '2023-07-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2023-12-28'",
+        "QUANTITA_SEMI": 0.6,
+        "NOME_MOD_COLTIVAZIONE": "'Idro cereali base'",
+        "NOME_TIPO_COLTURA": "'Grano duro'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2024-03-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2024-05-30'",
+        "QUANTITA_SEMI": 0.3,
+        "NOME_MOD_COLTIVAZIONE": "'Idro pomodoro standard'",
+        "NOME_TIPO_COLTURA": "'Pomodoro'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2025-06-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2025-09-29'",
+        "QUANTITA_SEMI": 0.4,
+        "NOME_MOD_COLTIVAZIONE": "'Idro cereali base'",
+        "NOME_TIPO_COLTURA": "'Mais'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2023-07-05'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2023-11-02'",
+        "QUANTITA_SEMI": 0.5,
+        "NOME_MOD_COLTIVAZIONE": "'Idro cereali base'",
+        "NOME_TIPO_COLTURA": "'Mais'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2024-01-15'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2024-05-14'",
+        "QUANTITA_SEMI": 0.35,
+        "NOME_MOD_COLTIVAZIONE": "'Idro soia nutriente'",
+        "NOME_TIPO_COLTURA": "'Soia'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2025-01-10'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2025-02-24'",
+        "QUANTITA_SEMI": 0.2,
+        "NOME_MOD_COLTIVAZIONE": "'Idro lattuga rapida'",
+        "NOME_TIPO_COLTURA": "'Lattuga'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2023-08-01'",
+        "CODICE_CELLA_IDR": "'000C'",
+        "CODICE_AREA": "'A00B'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2023-10-27'",
+        "QUANTITA_SEMI": 0.3,
+        "NOME_MOD_COLTIVAZIONE": "'Idro pomodoro intensivo'",
+        "NOME_TIPO_COLTURA": "'Pomodoro'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2024-04-01'",
+        "CODICE_CELLA_IDR": "'000C'",
+        "CODICE_AREA": "'A00B'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2024-06-28'",
+        "QUANTITA_SEMI": 0.2,
+        "NOME_MOD_COLTIVAZIONE": "'Idro legumi base'",
+        "NOME_TIPO_COLTURA": "'Fagiolo'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2023-07-10'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2023-10-18'",
+        "QUANTITA_SEMI": 0.2,
+        "NOME_MOD_COLTIVAZIONE": "'Idro tuberi substrato'",
+        "NOME_TIPO_COLTURA": "'Patata'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2024-02-01'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2024-04-21'",
+        "QUANTITA_SEMI": 0.8,
+        "NOME_MOD_COLTIVAZIONE": "'Idro radici substrato'",
+        "NOME_TIPO_COLTURA": "'Carota'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2025-05-10'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "DATA_FINE_EFFETTIVA": "DATE '2025-07-04'",
+        "QUANTITA_SEMI": 0.4,
+        "NOME_MOD_COLTIVAZIONE": "'Idro cucurbitacee'",
+        "NOME_TIPO_COLTURA": "'Zucchina'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2026-04-05'",
+        "CODICE_CELLA_IDR": "'001A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola II'",
+        "DATA_FINE_EFFETTIVA": "DATE '2026-05-20'",
+        "QUANTITA_SEMI": 0.3,
+        "NOME_MOD_COLTIVAZIONE": "'Idro lattuga rapida'",
+        "NOME_TIPO_COLTURA": "'Lattuga'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2026-05-21'",
+        "CODICE_CELLA_IDR": "'001A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola II'",
+        "DATA_FINE_EFFETTIVA": "NULL",
+        "QUANTITA_SEMI": 0.3,
+        "NOME_MOD_COLTIVAZIONE": "'Idro legumi base'",
+        "NOME_TIPO_COLTURA": "'Fagiolo'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2026-04-05'",
+        "CODICE_CELLA_IDR": "'001B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola II'",
+        "DATA_FINE_EFFETTIVA": "NULL",
+        "QUANTITA_SEMI": 0.5,
+        "NOME_MOD_COLTIVAZIONE": "'Idro cereali base'",
+        "NOME_TIPO_COLTURA": "'Mais'"
+    },
+    {
+        "DATA_INIZIO": "DATE '2026-04-04'",
+        "CODICE_CELLA_IDR": "'001C'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola II'",
+        "DATA_FINE_EFFETTIVA": "NULL",
+        "QUANTITA_SEMI": 0.2,
+        "NOME_MOD_COLTIVAZIONE": "'Idro tuberi substrato'",
+        "NOME_TIPO_COLTURA": "'Patata'"
+    }
+]

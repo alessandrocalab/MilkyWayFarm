@@ -34,13 +34,7 @@ SET SQLBLANKLINES ON
 @4_agricoltura/1_modalita_coltivazione.sql
 @4_agricoltura/2_tipo_coltura.SQL
 @4_agricoltura/3_ciclo_coltivazione.sql
-@4_agricoltura/4_produzione_agricola.sql
 @4_agricoltura/5_produzione_agricola.sql
-
---Sezione: 5_missione.sql
-
-@5_missione.sql/1_missione_rifornimento.sql
-@5_missione.sql/2_prodotto_missione.sql
 
 --Sezione: 6_associazioni
 

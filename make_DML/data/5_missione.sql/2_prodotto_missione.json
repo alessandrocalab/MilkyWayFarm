@@ -1,0 +1,182 @@
+[
+    {
+        "NOME_PRODOTTO": "'Acqua potabile'",
+        "NOME_MISSIONE": "'Ares Supply 01'",
+        "QUANTITA": 1200.0,
+        "DATA_PRODUZIONE": "DATE '2023-05-25'"
+    },
+    {
+        "NOME_PRODOTTO": "'Soluzione nutritiva idroponica base'",
+        "NOME_MISSIONE": "'Ares Supply 01'",
+        "QUANTITA": 500.0,
+        "DATA_PRODUZIONE": "DATE '2023-05-20'"
+    },
+    {
+        "NOME_PRODOTTO": "'Semi di grano duro'",
+        "NOME_MISSIONE": "'Ares Supply 01'",
+        "QUANTITA": 40.0,
+        "DATA_PRODUZIONE": "DATE '2023-05-10'"
+    },
+    {
+        "NOME_PRODOTTO": "'Semi di mais'",
+        "NOME_MISSIONE": "'Ares Supply 01'",
+        "QUANTITA": 35.0,
+        "DATA_PRODUZIONE": "DATE '2023-05-12'"
+    },
+    {
+        "NOME_PRODOTTO": "'Acqua potabile'",
+        "NOME_MISSIONE": "'Ares Supply 02'",
+        "QUANTITA": 1500.0,
+        "DATA_PRODUZIONE": "DATE '2023-08-12'"
+    },
+    {
+        "NOME_PRODOTTO": "'Mangime bovini crescita'",
+        "NOME_MISSIONE": "'Ares Supply 02'",
+        "QUANTITA": 750.0,
+        "DATA_PRODUZIONE": "DATE '2023-08-05'"
+    },
+    {
+        "NOME_PRODOTTO": "'Mangime pollame ovaiole'",
+        "NOME_MISSIONE": "'Ares Supply 02'",
+        "QUANTITA": 300.0,
+        "DATA_PRODUZIONE": "DATE '2023-08-07'"
+    },
+    {
+        "NOME_PRODOTTO": "'Antiparassitario bovini'",
+        "NOME_MISSIONE": "'Ares Supply 02'",
+        "QUANTITA": 65.0,
+        "DATA_PRODUZIONE": "DATE '2023-08-10'"
+    },
+    {
+        "NOME_PRODOTTO": "'Substrato in fibra di cocco'",
+        "NOME_MISSIONE": "'Demetra Cargo 01'",
+        "QUANTITA": 350.0,
+        "DATA_PRODUZIONE": "DATE '2023-12-20'"
+    },
+    {
+        "NOME_PRODOTTO": "'Lana di roccia agricola'",
+        "NOME_MISSIONE": "'Demetra Cargo 01'",
+        "QUANTITA": 250.0,
+        "DATA_PRODUZIONE": "DATE '2023-12-18'"
+    },
+    {
+        "NOME_PRODOTTO": "'Biofertilizzante microbico'",
+        "NOME_MISSIONE": "'Demetra Cargo 01'",
+        "QUANTITA": 180.0,
+        "DATA_PRODUZIONE": "DATE '2024-01-02'"
+    },
+    {
+        "NOME_PRODOTTO": "'Acqua potabile'",
+        "NOME_MISSIONE": "'Demetra Cargo 02'",
+        "QUANTITA": 1000.0,
+        "DATA_PRODUZIONE": "DATE '2024-06-28'"
+    },
+    {
+        "NOME_PRODOTTO": "'Semi di pomodoro'",
+        "NOME_MISSIONE": "'Demetra Cargo 02'",
+        "QUANTITA": 8.0,
+        "DATA_PRODUZIONE": "DATE '2024-06-15'"
+    },
+    {
+        "NOME_PRODOTTO": "'Semi di lattuga'",
+        "NOME_MISSIONE": "'Demetra Cargo 02'",
+        "QUANTITA": 5.0,
+        "DATA_PRODUZIONE": "DATE '2024-06-17'"
+    },
+    {
+        "NOME_PRODOTTO": "'Soluzione nutritiva concentrata'",
+        "NOME_MISSIONE": "'Demetra Cargo 02'",
+        "QUANTITA": 350.0,
+        "DATA_PRODUZIONE": "DATE '2024-06-25'"
+    },
+    {
+        "NOME_PRODOTTO": "'Vaccino bovini respiratorio'",
+        "NOME_MISSIONE": "'Hermes BioLab 01'",
+        "QUANTITA": 180.0,
+        "DATA_PRODUZIONE": "DATE '2025-01-28'"
+    },
+    {
+        "NOME_PRODOTTO": "'Vaccino pollame Newcastle'",
+        "NOME_MISSIONE": "'Hermes BioLab 01'",
+        "QUANTITA": 90.0,
+        "DATA_PRODUZIONE": "DATE '2025-01-30'"
+    },
+    {
+        "NOME_PRODOTTO": "'Antibiotico veterinario pollame'",
+        "NOME_MISSIONE": "'Hermes BioLab 01'",
+        "QUANTITA": 250.0,
+        "DATA_PRODUZIONE": "DATE '2025-02-01'"
+    },
+    {
+        "NOME_PRODOTTO": "'Mangime ovicaprini'",
+        "NOME_MISSIONE": "'Hermes BioLab 02'",
+        "QUANTITA": 500.0,
+        "DATA_PRODUZIONE": "DATE '2025-09-01'"
+    },
+    {
+        "NOME_PRODOTTO": "'Mangime suini'",
+        "NOME_MISSIONE": "'Hermes BioLab 02'",
+        "QUANTITA": 600.0,
+        "DATA_PRODUZIONE": "DATE '2025-09-02'"
+    },
+    {
+        "NOME_PRODOTTO": "'Reidratante orale veterinario'",
+        "NOME_MISSIONE": "'Hermes BioLab 02'",
+        "QUANTITA": 80.0,
+        "DATA_PRODUZIONE": "DATE '2025-09-05'"
+    },
+    {
+        "NOME_PRODOTTO": "'Acqua potabile'",
+        "NOME_MISSIONE": "'Atlas Storage 01'",
+        "QUANTITA": 1800.0,
+        "DATA_PRODUZIONE": "DATE '2025-12-27'"
+    },
+    {
+        "NOME_PRODOTTO": "'Compost sterile'",
+        "NOME_MISSIONE": "'Atlas Storage 01'",
+        "QUANTITA": 600.0,
+        "DATA_PRODUZIONE": "DATE '2025-12-20'"
+    },
+    {
+        "NOME_PRODOTTO": "'Fieno essiccato'",
+        "NOME_MISSIONE": "'Atlas Storage 01'",
+        "QUANTITA": 900.0,
+        "DATA_PRODUZIONE": "DATE '2025-12-22'"
+    },
+    {
+        "NOME_PRODOTTO": "'Paglia'",
+        "NOME_MISSIONE": "'Atlas Storage 01'",
+        "QUANTITA": 700.0,
+        "DATA_PRODUZIONE": "DATE '2025-12-23'"
+    },
+    {
+        "NOME_PRODOTTO": "'Acqua potabile'",
+        "NOME_MISSIONE": "'Atlas Storage 02'",
+        "QUANTITA": 1500.0,
+        "DATA_PRODUZIONE": "DATE '2026-03-08'"
+    },
+    {
+        "NOME_PRODOTTO": "'Semi di carota'",
+        "NOME_MISSIONE": "'Atlas Storage 02'",
+        "QUANTITA": 6.0,
+        "DATA_PRODUZIONE": "DATE '2026-03-01'"
+    },
+    {
+        "NOME_PRODOTTO": "'Semi di zucchina'",
+        "NOME_MISSIONE": "'Atlas Storage 02'",
+        "QUANTITA": 5.0,
+        "DATA_PRODUZIONE": "DATE '2026-03-03'"
+    },
+    {
+        "NOME_PRODOTTO": "'Correttore pH acido'",
+        "NOME_MISSIONE": "'Atlas Storage 02'",
+        "QUANTITA": 120.0,
+        "DATA_PRODUZIONE": "DATE '2026-03-05'"
+    },
+    {
+        "NOME_PRODOTTO": "'Correttore pH basico'",
+        "NOME_MISSIONE": "'Atlas Storage 02'",
+        "QUANTITA": 100.0,
+        "DATA_PRODUZIONE": "DATE '2026-03-05'"
+    }
+]

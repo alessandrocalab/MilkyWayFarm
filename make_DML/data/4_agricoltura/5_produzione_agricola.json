@@ -1,0 +1,218 @@
+[
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-12-28'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-07-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Grano duro'",
+        "QUANTITA": 8.4
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-12-28'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-07-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di grano duro'",
+        "QUANTITA": 0.8
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-05-30'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-03-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Pomodoro'",
+        "QUANTITA": 18.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-05-30'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-03-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di pomodoro'",
+        "QUANTITA": 0.1
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2025-09-29'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2025-06-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Mais'",
+        "QUANTITA": 14.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2025-09-29'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2025-06-01'",
+        "CODICE_CELLA_IDR": "'000A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di mais'",
+        "QUANTITA": 1.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-11-02'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-07-05'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Mais'",
+        "QUANTITA": 17.5
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-11-02'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-07-05'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di mais'",
+        "QUANTITA": 1.2
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-05-14'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-01-15'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Soia'",
+        "QUANTITA": 8.75
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-05-14'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-01-15'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di soia'",
+        "QUANTITA": 0.8
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2025-02-24'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2025-01-10'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Lattuga'",
+        "QUANTITA": 7.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2025-02-24'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2025-01-10'",
+        "CODICE_CELLA_IDR": "'000B'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di lattuga'",
+        "QUANTITA": 0.05
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-10-27'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-08-01'",
+        "CODICE_CELLA_IDR": "'000C'",
+        "CODICE_AREA": "'A00B'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Pomodoro'",
+        "QUANTITA": 21.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-10-27'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-08-01'",
+        "CODICE_CELLA_IDR": "'000C'",
+        "CODICE_AREA": "'A00B'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di pomodoro'",
+        "QUANTITA": 0.12
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-06-28'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-04-01'",
+        "CODICE_CELLA_IDR": "'000C'",
+        "CODICE_AREA": "'A00B'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Fagiolo'",
+        "QUANTITA": 5.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-06-28'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-04-01'",
+        "CODICE_CELLA_IDR": "'000C'",
+        "CODICE_AREA": "'A00B'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di fagiolo'",
+        "QUANTITA": 0.45
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-10-18'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-07-10'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Patata'",
+        "QUANTITA": 6.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2023-10-18'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2023-07-10'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Talee di patata'",
+        "QUANTITA": 0.7
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-04-21'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-02-01'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Carota'",
+        "QUANTITA": 12.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2024-04-21'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2024-02-01'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di carota'",
+        "QUANTITA": 0.08
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2025-07-04'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2025-05-10'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Zucchina'",
+        "QUANTITA": 12.0
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2025-07-04'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2025-05-10'",
+        "CODICE_CELLA_IDR": "'000D'",
+        "CODICE_AREA": "'A00C'",
+        "NOME_STRUTTURA": "'Struttura Agricola'",
+        "NOME_PRODOTTO": "'Semi di zucchina'",
+        "QUANTITA": 0.1
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2026-05-20'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2026-04-05'",
+        "CODICE_CELLA_IDR": "'001A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola II'",
+        "NOME_PRODOTTO": "'Lattuga'",
+        "QUANTITA": 10.5
+    },
+    {
+        "DATA_PRODUZIONE_AGRICOLA": "DATE '2026-05-20'",
+        "DATA_INIZIO_CICLO_COLTIVAZIONE": "DATE '2026-04-05'",
+        "CODICE_CELLA_IDR": "'001A'",
+        "CODICE_AREA": "'A00A'",
+        "NOME_STRUTTURA": "'Struttura Agricola II'",
+        "NOME_PRODOTTO": "'Semi di lattuga'",
+        "QUANTITA": 0.07
+    }
+]

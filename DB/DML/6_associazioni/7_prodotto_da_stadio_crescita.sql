@@ -1,0 +1,23 @@
+--NOME_PRODOTTO, NOME_STADIO_CRESCITA, NOME_TIPO_ANIMALE
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Latte bovino', 'Adulto', 'Bovino');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Carne bovina', 'Adulto', 'Bovino');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Pelle bovina', 'Adulto', 'Bovino');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Letame bovino', 'Adulto', 'Bovino');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Latte caprino', 'Adulto', 'Capra');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Carne caprina', 'Adulto', 'Capra');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Latte ovino', 'Adulto', 'Pecora');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Carne ovina', 'Adulto', 'Pecora');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Lana ovina', 'Adulto', 'Pecora');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Letame ovino', 'Adulto', 'Pecora');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Carne suina', 'Adulto', 'Maiale');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Letame suino', 'Adulto', 'Maiale');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Uova di gallina', 'Ovodeposizione', 'Gallina');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Carne di pollo', 'Adulto', 'Gallina');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Pollina', 'Adulto', 'Gallina');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Piume di pollame', 'Adulto', 'Gallina');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Carne di tacchino', 'Adulto', 'Tacchino');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Pollina', 'Adulto', 'Tacchino');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Piume di pollame', 'Adulto', 'Tacchino');
+INSERT INTO PRODOTTO_DA_STADIO_CRESCITA VALUES ('Carne di coniglio', 'Adulto', 'Coniglio');
+
+COMMIT;

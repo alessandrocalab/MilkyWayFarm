@@ -1,0 +1,102 @@
+[
+    {
+        "NOME_PRODOTTO": "'Latte bovino'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Bovino'"
+    },
+    {
+        "NOME_PRODOTTO": "'Carne bovina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Bovino'"
+    },
+    {
+        "NOME_PRODOTTO": "'Pelle bovina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Bovino'"
+    },
+    {
+        "NOME_PRODOTTO": "'Letame bovino'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Bovino'"
+    },
+    {
+        "NOME_PRODOTTO": "'Latte caprino'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Capra'"
+    },
+    {
+        "NOME_PRODOTTO": "'Carne caprina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Capra'"
+    },
+    {
+        "NOME_PRODOTTO": "'Latte ovino'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Pecora'"
+    },
+    {
+        "NOME_PRODOTTO": "'Carne ovina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Pecora'"
+    },
+    {
+        "NOME_PRODOTTO": "'Lana ovina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Pecora'"
+    },
+    {
+        "NOME_PRODOTTO": "'Letame ovino'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Pecora'"
+    },
+    {
+        "NOME_PRODOTTO": "'Carne suina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Maiale'"
+    },
+    {
+        "NOME_PRODOTTO": "'Letame suino'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Maiale'"
+    },
+    {
+        "NOME_PRODOTTO": "'Uova di gallina'",
+        "NOME_STADIO_CRESCITA": "'Ovodeposizione'",
+        "NOME_TIPO_ANIMALE": "'Gallina'"
+    },
+    {
+        "NOME_PRODOTTO": "'Carne di pollo'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Gallina'"
+    },
+    {
+        "NOME_PRODOTTO": "'Pollina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Gallina'"
+    },
+    {
+        "NOME_PRODOTTO": "'Piume di pollame'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Gallina'"
+    },
+    {
+        "NOME_PRODOTTO": "'Carne di tacchino'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Tacchino'"
+    },
+    {
+        "NOME_PRODOTTO": "'Pollina'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Tacchino'"
+    },
+    {
+        "NOME_PRODOTTO": "'Piume di pollame'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Tacchino'"
+    },
+    {
+        "NOME_PRODOTTO": "'Carne di coniglio'",
+        "NOME_STADIO_CRESCITA": "'Adulto'",
+        "NOME_TIPO_ANIMALE": "'Coniglio'"
+    }
+]
