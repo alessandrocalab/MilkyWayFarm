@@ -27,7 +27,7 @@ CREATE TABLE VISITA_VETERINARIA(
         CHECK (TIPO_VISITA IN(
                 'ROUTINE',
                 'EMERGENZA',
-                'CONTROLLO_GESTAZIONE',
+                'GESTAZIONE',
                 'INGRESSO',
                 'BIOSICUREZZA'
         ))
