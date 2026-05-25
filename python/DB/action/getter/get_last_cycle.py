@@ -1,0 +1,21 @@
+from python.DB.action.getter.base import get_data_base
+
+def get_last_cycle(CODICE_CELLA_IDR, NOME_STRUTTURA):
+    return get_data_base(
+        "SELECT * "
+        "FROM CELLA_IDROPONICA CI " 
+        "JOIN CICLO_COLTIVAZIONE CC " 
+        "ON CC.NOME_STRUTTURA = CI.NOME_STRUTTURA AND CC.CODICE_CELLA_IDR = CI.CODICE_CELLA_IDR " 
+        f"WHERE CI.CODICE_CELLA_IDR='{CODICE_CELLA_IDR}' "
+        f"AND CI.NOME_STRUTTURA='{NOME_STRUTTURA}' "
+        "AND CC.DATA_INIZIO=( "
+            "SELECT MAX(CC2.DATA_INIZIO) "
+            "FROM CELLA_IDROPONICA CI2 "
+            "JOIN CICLO_COLTIVAZIONE CC2 " 
+            "ON CC2.NOME_STRUTTURA = CI2.NOME_STRUTTURA AND CC2.CODICE_CELLA_IDR = CI2.CODICE_CELLA_IDR "
+            "WHERE CI2.CODICE_CELLA_IDR=CI.CODICE_CELLA_IDR "
+            "AND CI2.NOME_STRUTTURA=CI.NOME_STRUTTURA "
+        ")"
+    ) 
+
+

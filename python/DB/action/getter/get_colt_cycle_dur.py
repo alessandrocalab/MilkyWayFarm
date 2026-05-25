@@ -1,0 +1,24 @@
+from python.DB.action.getter.base import get_data_base
+
+def get_colt_cycle_dur(DATA_INIZIO, CODICE_CELLA_IDR, NOME_STRUTTURA):
+    DATA_INIZIO=DATA_INIZIO.strftime("%Y-%m-%d")
+
+    return get_data_base(
+        "SELECT TC.DURATA_CICLO_COLTURA_GIORNI "
+        "FROM TIPO_COLTURA TC "
+        "JOIN TIPO_COLTURA_USA_SEMI_DI_TIPO TCUDT "
+        "ON TCUDT.NOME_TIPO_COLTURA=TC.NOME_TIPO_COLTURA "
+        "WHERE TCUDT.NOME_SEMI IN("
+            "SELECT CCSM.NOME_SEMI "
+            "FROM CICLO_COLT_UTILIZZA_SEMI_MISSIONE CCSM "
+            f"WHERE CCSM.DATA_INIZIO=DATE '{DATA_INIZIO}' "
+            f"AND CCSM.CODICE_CELLA_IDR='{CODICE_CELLA_IDR}' "
+            f"AND CCSM.NOME_STRUTTURA='{NOME_STRUTTURA}' "
+            "UNION "
+            "SELECT CCPA.NOME_PRODOTTO "
+            "FROM CICLO_COLT_UTILIZZA_PRODUZIONE_AGRICOLA CCPA "
+            f"WHERE CCPA.DATA_INIZIO=DATE '{DATA_INIZIO}' "
+            f"AND CCPA.CODICE_CELLA_IDR='{CODICE_CELLA_IDR}' "
+            f"AND CCPA.NOME_STRUTTURA='{NOME_STRUTTURA}'"
+        ")"
+    )
