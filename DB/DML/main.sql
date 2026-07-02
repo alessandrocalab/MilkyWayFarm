@@ -34,6 +34,7 @@ SET SQLBLANKLINES ON
 @4_agricoltura/2_tipo_coltura.sql
 @4_agricoltura/3_ciclo_coltivazione.sql
 @4_agricoltura/4_produzione_agricola.sql
+@4_agricoltura/5_semi_missione.sql
 
 --Sezione: 5_associazioni
 
@@ -47,6 +48,7 @@ SET SQLBLANKLINES ON
 @5_associazioni/8_cella_idr_rispetta_mod_colt.sql
 @5_associazioni/9_tipo_colt_accetta_mod_colt.sql
 @5_associazioni/10_tipo_coltura_tipo_prodotto.sql
+@5_associazioni/13_tipo_coltura_usa_semi_di_tipo.sql
 
 
 COMMIT;

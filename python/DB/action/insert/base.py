@@ -1,7 +1,6 @@
-
 from python.connection.getConnection import get_connection
 
-def update_base(query):
+def insert_base(query):
     conn=get_connection()
     cur=conn.cursor()
 

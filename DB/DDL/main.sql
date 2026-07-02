@@ -54,6 +54,7 @@ SET SQLBLANKLINES ON
 @5_associazioni/10_tipo_coltura_tipo_prodotto.SQL
 @5_associazioni/11_ciclo_colt_utilizza_semi_missione.sql
 @5_associazioni/12_ciclo_colt_utilizza_produzione_agricola.sql
+@5_associazioni/13_tipo_coltura_usa_semi_di_tipo.sql
 
 
 COMMIT;
