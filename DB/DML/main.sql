@@ -4,6 +4,7 @@ SET SQLBLANKLINES ON
 
 --Sezione: 1_prodotto
 
+@1_prodotto/3_unita_di_misura.sql
 @1_prodotto/1_tipo_prodotto.sql
 @1_prodotto/2_sostanza.sql
 

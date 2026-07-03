@@ -1,0 +1,4 @@
+-20001 --Inserimento di una combinazione di dati non valida
+-20002 --Inserimento di date future per eventi già avvenuti
+-20003 --Inserimento di eventi che necessitano di un evento precedente
+-20004 --Inserimento di data terminazione minore di quella di attivazione
