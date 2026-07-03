@@ -50,6 +50,8 @@ SET SQLBLANKLINES ON
 @5_associazioni/9_tipo_colt_accetta_mod_colt.sql
 @5_associazioni/10_tipo_coltura_tipo_prodotto.sql
 @5_associazioni/13_tipo_coltura_usa_semi_di_tipo.sql
+@5_associazioni/14_blocco_animale_contiene_sensore.sql
+@5_associazioni/15_cella_idr_contiene_sensore.sql
 
 
 COMMIT;

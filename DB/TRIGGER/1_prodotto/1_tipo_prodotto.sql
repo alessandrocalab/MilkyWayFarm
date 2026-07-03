@@ -1,34 +1,56 @@
-CREATE TRIGGER TRG_PRODOTTO_EDIBILE
+--ATTIVATO SE IL PRODOTTO EDIBILE NON HA VALORI NUTRIZIONALE
+
+--ATTIVATO SE IL PRODOTTO NON EDIBILE HA VALORI NUTRIZIONALI
+
+CREATE OR REPLACE TRIGGER TRG_PRODOTTO_EDIBILE
 BEFORE INSERT OR UPDATE ON TIPO_PRODOTTO
 FOR EACH ROW
 
-BEGIN 
-    IF :NEW.IS_EDIBILE=1 THEN
-        IF :NEW.FIBRE IS NULL
-            OR :NEW.PROTEINE IS NULL 
-            OR :NEW.GRASSI IS NULL
-            OR :NEW.CARBOIDRATI IS NULL 
-            THEN 
+DECLARE
+    EXC_PRODOTTO_EDIBILE_SENZA_VALORI EXCEPTION;
+    EXC_PRODOTTO_NON_EDIBILE_CON_VALORI EXCEPTION;
 
-                RAISE_APPLICATION_ERROR(
-                    -20001,
-                    'Un prodotto edibile deve avere tutti i valori nutrizionali'
-                );
-            
-            END IF;
+BEGIN 
+    IF :NEW.IS_EDIBILE = 1 THEN
+
+        IF :NEW.FIBRE IS NULL
+           OR :NEW.PROTEINE IS NULL 
+           OR :NEW.GRASSI IS NULL
+           OR :NEW.CARBOIDRATI IS NULL THEN 
+
+            RAISE EXC_PRODOTTO_EDIBILE_SENZA_VALORI;
+
+        END IF;
         
     ELSE
-        IF :NEW.FIBRE IS NOT NULL 
-            OR :NEW.PROTEINE IS NOT NULL 
-            OR :NEW.GRASSI IS NOT NULL
-            OR :NEW.CARBOIDRATI IS NOT NULL 
-            THEN 
-            
-                RAISE_APPLICATION_ERROR(
-                    -20001,
-                    'Un prodotto NON edibile non può avere valori nutrizionali'
-                );
 
-            END IF;
+        IF :NEW.FIBRE IS NOT NULL 
+           OR :NEW.PROTEINE IS NOT NULL 
+           OR :NEW.GRASSI IS NOT NULL
+           OR :NEW.CARBOIDRATI IS NOT NULL THEN 
+            
+            RAISE EXC_PRODOTTO_NON_EDIBILE_CON_VALORI;
+
         END IF;
-    END;
+
+    END IF;
+
+EXCEPTION
+    WHEN EXC_PRODOTTO_EDIBILE_SENZA_VALORI
+        THEN
+
+        RAISE_APPLICATION_ERROR(
+            -20001,
+            'Un prodotto edibile deve avere tutti i valori nutrizionali'
+        );
+
+    WHEN EXC_PRODOTTO_NON_EDIBILE_CON_VALORI 
+        THEN
+            
+        RAISE_APPLICATION_ERROR(
+            -20002,
+            'Un prodotto NON edibile non può avere valori nutrizionali'
+        );
+
+END;
+/

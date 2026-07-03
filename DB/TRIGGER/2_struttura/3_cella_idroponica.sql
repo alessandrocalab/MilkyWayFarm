@@ -1,5 +1,5 @@
---ATTIVATO SE VIENE TERMINATO UN BLOCCO ANIMALE
---CON ANIMALI ALL'INTERNO OPPURE PRIMA
+--ATTIVATO SE VIENE TERMINATA UNA CELLA IDROPONICA
+--CON CICLI DI COLTIVAZIONE ATTIVI OPPURE PRIMA
 --DELLA SUA DATA DI ATTIVAZIONE
 
 --ATTIVATO SE OCCUPA PIU SUPERFICIE DI QUELLA DISPONIBILE NELLA STRUTTURA
@@ -7,17 +7,17 @@
 --ATTIVATO SE LA DATA DI MONTAGGIO È PIU VECCHIA DI QUELLA PIÙ RECENTE DI UN ALTRO BLOCCO/CELLA
 --NELLA STESSA STRUTTURA
 
---ATTIVATO SE LA DATA DI MONTAGGIO È PIÙ RECENTE
+--ATTIVATO SE LA DATA DI MONTAGGIO È MENO RECENTE
 --DI QUELLA DI ATTIVAZIONE DELLA STRUTTURA
 
-CREATE TRIGGER TRG_BLOCCO_ANIMALE
-BEFORE INSERT OR UPDATE ON BLOCCO_ANIMALE
+CREATE TRIGGER TRG_CELLA_IDROPONICA
+BEFORE INSERT OR UPDATE ON CELLA_IDROPONICA
 FOR EACH ROW
 
 DECLARE
-    NUMERO_ANIMALI NUMBER(6,0);
+    NUMERO_CICLI NUMBER(6,0);
     SUPERFICIE_STRUTTURA_DISPONIBILE NUMBER(8,2);
-    DATA_ULTIMO_BLOCCO DATE;
+    DATA_ULTIMA_CELLA DATE;
     DATA_ATTIVAZIONE_STRUTTURA DATE;
 
 BEGIN
@@ -25,12 +25,12 @@ BEGIN
     SELECT DATA_ATTIVAZIONE
     INTO DATA_ATTIVAZIONE_STRUTTURA
     FROM STRUTTURA
-    WHERE STRUTTURA.NOME=:NEW.STRUTTURA;
+    WHERE NOME_STRUTTURA=:NEW.NOME_STRUTTURA;
 
-    IF DATA_ATTIVAZIONE_STRUTTURA < :NEW.DATA_MONTAGGIO
+    IF :NEW.DATA_MONTAGGIO < DATA_ATTIVAZIONE_STRUTTURA
         THEN
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20004,
                 'Non è possibile inserire una data di montaggio meno recente di quella di attivazione della struttura ospitante'
             );
     END IF;
@@ -39,26 +39,26 @@ BEGIN
 
     --Controllo data blocco/cella più recente
     SELECT MAX(DATA_MONTAGGIO)
-    INTO DATA_ULTIMO_BLOCCO 
+    INTO DATA_ULTIMA_CELLA 
     FROM(
-        SELECT MAX(DATA_MONTAGGIO)
-        FROM CELLA_IDROPONICA CI
-        WHERE CI.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+        SELECT MAX(DATA_MONTAGGIO) AS DATA_MONTAGGIO
+        FROM BLOCCO_ANIMALE BA
+        WHERE BA.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
         
         UNION 
 
-        SELECT MAX(DATA_MONTAGGIO)
-        FROM BLOCCO_ANIMALE BA
-        WHERE BA.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-        AND BA.NUMERO_BLOCCO<>:NEW.NUMERO_BLOCCO
+        SELECT MAX(DATA_MONTAGGIO) AS DATA_MONTAGGIO
+        FROM CELLA_IDROPONICA CI
+        WHERE CI.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+        AND CI.CODICE_CELLA_IDR<>:NEW.CODICE_CELLA_IDR
     );
 
-    IF DATA_ULTIMO_BLOCCO IS NOT NULL 
-        AND :NEW.DATA_MONTAGGIO < DATA_ULTIMO_BLOCCO 
+    IF DATA_ULTIMA_CELLA IS NOT NULL 
+        AND :NEW.DATA_MONTAGGIO < DATA_ULTIMA_CELLA 
         THEN
             RAISE_APPLICATION_ERROR(
                 -20001,
-                'Non è possibile inserire una data di montaggio meno recente dell’ultimo blocco nella stessa struttura'
+                'Non è possibile inserire una data di montaggio meno recente dell ultimo blocco o cella nella stessa struttura'
             );
     END IF;
 
@@ -70,7 +70,6 @@ BEGIN
                 SELECT SUPERFICIE_MQ
                 FROM BLOCCO_ANIMALE BA
                 WHERE NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-                AND NUMERO_BLOCCO<>:NEW.NUMERO_BLOCCO
                 AND BA.DATA_MONTAGGIO <= :NEW.DATA_MONTAGGIO
                 AND (
                     BA.DATA_SMONTAGGIO IS NULL
@@ -82,6 +81,7 @@ BEGIN
                 SELECT SUPERFICIE_MQ
                 FROM CELLA_IDROPONICA CI
                 WHERE NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+                AND CODICE_CELLA_IDR<>:NEW.CODICE_CELLA_IDR
                 AND CI.DATA_MONTAGGIO <= :NEW.DATA_MONTAGGIO
                 AND (
                     CI.DATA_SMONTAGGIO IS NULL
@@ -99,7 +99,7 @@ BEGIN
 
             RAISE_APPLICATION_ERROR(
                     -20001,
-                    'La superficie del blocco animale supera quella disponibile della struttura in cui è contenuto'
+                    'La superficie della cella idroponica supera quella disponibile della struttura in cui è contenuta'
                 );
     END IF;
 
@@ -121,23 +121,23 @@ BEGIN
             ELSE
 
             SELECT COUNT(*)
-            INTO NUMERO_ANIMALI
-            FROM ANIMALE_ALLOCATO_BLOCCO AAB
-            WHERE AAB.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-            AND AAB.NUMERO_BLOCCO=:NEW.NUMERO_BLOCCO
+            INTO NUMERO_CICLI
+            FROM CICLO_COLTIVAZIONE CC
+            WHERE CC.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+            AND CC.CODICE_CELLA_IDR=:NEW.CODICE_CELLA_IDR
                 AND(
-                    AAB.DATA_DEALLOCAZIONE IS NULL
-                    OR AAB.DATA_DEALLOCAZIONE > :NEW.DATA_SMONTAGGIO
+                    CC.DATA_FINE_EFFETTIVA IS NULL
+                    OR CC.DATA_FINE_EFFETTIVA > :NEW.DATA_SMONTAGGIO
                 );
 
            
 
-            IF NUMERO_ANIMALI > 0 
+            IF NUMERO_CICLI > 0 
                 THEN
 
                 RAISE_APPLICATION_ERROR(
                     -20003,
-                    'Per terminare un blocco animale è necessario rimuovere gli animali al suo interno'
+                    'Per terminare una cella idroponica è necessario chiudere tutti i cicli di coltivazione al suo interno'
                 );
 
                 END IF;

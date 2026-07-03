@@ -2,3 +2,4 @@
 -20002 --Inserimento di date future per eventi già avvenuti
 -20003 --Inserimento di eventi che necessitano di un evento precedente
 -20004 --Inserimento di data terminazione minore di quella di attivazione
+-20005 --Inserimento ommettendo un campo obbligatorio, selezionabile tra uno di 2 o più attributi

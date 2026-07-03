@@ -1,0 +1,60 @@
+--Attivato se il sensore non è collegato ad alcun blocco
+--nella data di registrazione
+
+CREATE TRIGGER TGR_REGISTRAZIONE_SENSORE
+BEFORE INSERT OR UPDATE ON REGISTRAZIONE_SENSORE
+FOR EACH ROW
+
+DECLARE
+    NUMERO_COLLEGAMENTI NUMBER(3,0);
+
+    DATA_INVALIDA EXCEPTION;
+
+BEGIN
+
+        
+        SELECT COUNT(*)
+        INTO NUMERO_COLLEGAMENTI
+        FROM CELLA_IDR_CONTIENE_SENSORE CICS
+        WHERE CICS.SERIALE=:NEW.SERIALE
+        AND CICS.NOME_PRODUTTORE=:NEW.NOME_PRODUTTORE
+        AND CICS.NOME_MODELLO=:NEW.NOME_MODELLO
+        AND CICS.DATA_MONTAGGIO <= :NEW.DATA_SECONDI
+        AND (
+            CICS.DATA_SMONTAGGIO IS NULL 
+            OR CICS.DATA_SMONTAGGIO > :NEW.DATA_SECONDI
+        );
+
+        IF NUMERO_COLLEGAMENTI = 0 --SE NON C'È NELLE CELLE IDROPONICHE CERCHIAMO NEI BLOCCHI ANIMALE
+            THEN
+                SELECT COUNT(*)
+                INTO NUMERO_COLLEGAMENTI
+                FROM BLOCCO_ANIMALE_CONTIENE_SENSORE BACS
+                WHERE BACS.SERIALE=:NEW.SERIALE
+                AND BACS.NOME_PRODUTTORE=:NEW.NOME_PRODUTTORE
+                AND BACS.NOME_MODELLO=:NEW.NOME_MODELLO
+                AND BACS.DATA_MONTAGGIO <= :NEW.DATA_SECONDI
+                AND (
+                    BACS.DATA_SMONTAGGIO IS NULL 
+                    OR BACS.DATA_SMONTAGGIO > :NEW.DATA_SECONDI
+                );
+
+        END IF;
+
+        IF NUMERO_COLLEGAMENTI = 0
+            THEN
+                RAISE DATA_INVALIDA;
+        END IF;
+
+
+
+EXCEPTION
+    WHEN DATA_INVALIDA
+        THEN
+
+        RAISE_APPLICATION_ERROR(
+            -20001,
+            'La registrazione sensore ha una data non compatabile con alcuna allocazione di quest ultimo'
+        );
+END;
+/
