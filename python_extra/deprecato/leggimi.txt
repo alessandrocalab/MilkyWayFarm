@@ -1,0 +1,4 @@
+Inizialemente, abbiamo deciso, di utilizzare un simulatore scritto in python che comunicasse tramite API,
+per la popolazioni di alcune tabelle del database, successivamente è stato trascritto in PL/SQL.
+
+(PL/SQL scoperto troppo tardi :( )

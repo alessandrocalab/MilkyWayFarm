@@ -1,0 +1,35 @@
+Regole generali
+
+Ogni progetto può essere presentato da minimo 2 e massimo 3 studenti ed è a tema libero. Esso avrà una valutazione che varia da 0 a 7 punti e che riguarderà sia la complessità del tema trattato che la bontà della soluzione proposta e della documentazione allegata. Per accedere all'esame orale è necessaria una valutazione superiore a 2 punti. La valutazione del progetto è unica e vale per tutti i proponenti.
+I requisiti di complessità minima variano, come indicato nella tabella sottostante, in relazione al numero di studenti che fanno parte del gruppo. Basta sostituire le variabili usate nel presente documento con i valori letti nella tabella.
+Regole di consegna
+
+Occorre preparare un archivio compresso contenente uno o più script  SQL che ricostruiscano completamente il database, il dump del db stesso (facoltativo), un jpeg dello schema relazionale e del diagramma EE/R e la documentazione di corredo in formato pdf (non docx) entro la data che sarà indicata di volta in volta sulla piattaforma, e in ogni caso prima della data fissata per la prova pratica. E' sospesa sine die la consegna via posta ordinaria per gli studenti fuori sede e i lavoratori, come la consegna di una relazione cartacea. Tutto il materiale va spedito via posta elettronica al docente che risponderà con un messaggio di conferma.
+Requisiti di complessità minima
+
+Scelto un tema, il primo passo è la raccolta dei requisiti espressi in linguaggio naturale. In tal senso è facoltativo (ma preferibile) che si parta con gli schemi scheletro di settore e l'eventuale analisi del sistema informatico preesistente per poi integrarli in uno schema unico. Lo schema unico deve comprendere minimo K entità, contando una sola volta le entità che producono specializzazioni (ovvero escludendo dal conteggio le entità figlie dovute alle specializzazioni). I requisiti raccolti devono includere anche aspetti riguardanti le categorie di utenti, i privilegi di accesso di ciascuna, le prestazioni attese, il numero di potenziali utenti della base di dati e la dimensione stimata delle tabelle a regime. Inoltre vanno indicati tutti i vincoli di integrità statici e minimo P vincoli di integrità dinamici, le operazioni di base (quelle che coinvolgono una sola tabella) e minimo Q operazioni degli utenti (quelle che coinvolgono più tabelle; è fortemente preferibile che comportimo operazioni di scrittura e non siano semplici interrogazioni), ciascuna che coinvolga minimo R tabelle. Si fa presente che i vincoli di integrità dinamici e le operazioni degli utenti possono essere anche ottenuti da regole di business e quindi di fatto imposti dal progettista (ad esempio si può stabilire che un supervisore non possa avere più di 10 sottoposti o che non si effettuino vendite quando il numero di dipendenti presenti al posto di lavoro è minore di 5). Le Q operazioni degli utenti vanno ulteriormente specificate attraverso i diagrammi UML use case, UML di sequenza e compilando la scheda del descrittore di operazione (si veda l'Albano a pag. 51). Lo schema concettuale va quindi trasformato in uno schema relazionale (ovvero lo schema contentente soltanto le tabelle e le frecce che collegano le chiavi esterne alle chiavi primarie) secondo le regole viste durante il corso e va creato un glossario che definisca i termini principali e/o in qualsiasi modo ambigui. Va effettuata infine la verifica della normalità dello schema proposto onde appurare che sia in BCNF o almeno in 3NF e nel caso sia presente qualche dipendenza anomala segnalarla.
+
+# Studenti	K	P	Q	R
+2 	10 	6 	4 	3
+3 	14 	9 	6 	3
+
+Elenco documentazione
+
+    analisi dei requisiti
+    glossario
+    diagramma EER (oppure UML delle classi)
+    elenco delle operazioni di base
+    elenco delle operazioni degli utenti
+    Use case e descrittore di operazione per le operazioni degli utenti
+    elenco dei vincoli d'integrità statici
+    elenco dei vincoli di integrità dinamici
+    diagramma relazionale
+    verifica di normalità dello schema
+
+Requisiti implementativi
+
+Conclusa la fase di progettazione, si può passare alla fase implementativa. Tutte le tabelle e i vincoli individuati nello schema relazionale vanno implementati in Oracle con le opportune istruzioni SQL DDL. Le tabelle vanno quindi popolate con dati fittizi (minimo 15 record per tabella e in ogni caso tanti da permettere la verifica del corretto funzionamento delle procedure implementate). Va creato almeno un utente per ogni categoria d'utenti e bisogna garantire tramite le opportune viste che egli acceda solo ai dati previsti in fase di progettazione.
+I P vincoli di integrità dinamici vanno implementati tramite P triggers in PL/SQL, mentre le Q operazioni degli utenti vanno implementate attraverso Q stored procedures (o funzioni, se del caso) sempre in PL/SQL. Sia nei triggers che nelle stored procedures vanno gestite esplicitamente le eccezioni, mentre le seconde vanno programmate come transazioni esplicite (ovvero occorre gestire eplicitamente i comandi di COMMIT e ROLLBACK). Tutto il codice sviluppato va infine aggiunto in coda alla relazione.
+
+N.B.
+Dato l'argomento libero e la strutturazione in gruppi, qualcuno potrebbe essere tentato di eccedere nella delega dei compiti all'interno dei gruppi o di riproporre il lavoro di altri. Considero preferibile un progetto non eccelso ma originale ad un progetto inappuntabile non frutto del proprio lavoro. Il plagio è una forma di truffa e come tale sarà trattato: basterà il mio fondato sospetto che il lavoro non sia originale per escludere i proponenti dal sostenere l'esame. Buon lavoro.

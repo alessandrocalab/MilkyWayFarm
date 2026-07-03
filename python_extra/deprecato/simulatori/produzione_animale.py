@@ -6,7 +6,7 @@ import random
 def setProjectRoot():
     PROJECT_ROOT = os.getcwd()
 
-    while os.path.basename(PROJECT_ROOT) != "MilkWayFarm":
+    while os.path.basename(PROJECT_ROOT) != "MilkyWayFarm":
         parent = os.path.dirname(PROJECT_ROOT)
 
         if parent == PROJECT_ROOT:

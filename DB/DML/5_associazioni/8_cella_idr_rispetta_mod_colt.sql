@@ -16,4 +16,4 @@ INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000C', 'Struttura Agricola II',
 INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000C', 'Struttura Agricola II', 'Organica letame bovino');
 INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000C', 'Struttura Agricola II', 'Organica letame ovino');
 
-COMMIT;COMMIT;
+COMMIT;

@@ -51,7 +51,7 @@ SET SQLBLANKLINES ON
 @5_associazioni/7_animale_allocato_blocco.sql
 @5_associazioni/8_cella_idr_rispetta_mod_colt.sql
 @5_associazioni/9_tipo_colt_accetta_mod_colt.sql
-@5_associazioni/10_tipo_coltura_tipo_prodotto.SQL
+@5_associazioni/10_tipo_coltura_tipo_prodotto.sql
 @5_associazioni/11_ciclo_colt_utilizza_semi_missione.sql
 @5_associazioni/12_ciclo_colt_utilizza_produzione_agricola.sql
 @5_associazioni/13_tipo_coltura_usa_semi_di_tipo.sql

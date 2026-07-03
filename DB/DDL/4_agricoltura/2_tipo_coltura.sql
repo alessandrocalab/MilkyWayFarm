@@ -12,7 +12,7 @@ CREATE TABLE TIPO_COLTURA(
     --CHECK
     CONSTRAINT CK_TIPO_COLTURA_CATEGORIA
         CHECK (CATEGORIA_COLTURA IN (
-            'CERALI',
+            'CEREALI',
             'LEGUMI',
             'ORTAGGI',
             'OLEAGINOSE',

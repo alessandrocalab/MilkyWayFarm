@@ -5,7 +5,7 @@ INSERT INTO VACCINAZIONE VALUES ('0000000002', 'Mastite', 'Bovino', 'Adulto', DA
 INSERT INTO VACCINAZIONE VALUES ('0000000004', 'Newcastle', 'Gallina', 'Giovane', DATE '2025-03-01');
 
 INSERT INTO VACCINAZIONE VALUES ('0000000005', 'Newcastle', 'Gallina', 'Giovane', DATE '2025-03-25');
-INSERT INTO VACCINAZIONE VALUES ('0000000005', 'Bronchite infettiva', 'Gallina', 'Ovodeposizione', DATE '2025-04-10');
+INSERT INTO VACCINAZIONE VALUES ('0000000005', 'Bronchite infettiva', 'Gallina', 'Adulto', DATE '2025-04-10');
 
 
 COMMIT;

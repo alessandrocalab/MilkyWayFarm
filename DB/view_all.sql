@@ -24,4 +24,4 @@
         on a.NOME_MODALITA_COLTIVAZIONE = b.NOME_MOD_COLTIVAZIONE 
         where b.DATA_FINE_EFFETTIVA is  null
     )
-)
+);
