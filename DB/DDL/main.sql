@@ -27,11 +27,9 @@ SET SQLBLANKLINES ON
 @3_animale/2_animale.sql
 @3_animale/3_stadio_crescita.sql
 @3_animale/4_dieta_animale.sql
-@3_animale/5_tipo_vaccino.sql
-@3_animale/6_vaccinazione.sql
-@3_animale/7_visita_veterinaria.sql
-@3_animale/8_prescrizione_animale.sql
-@3_animale/9_produzione_animale.sql
+@3_animale/5_visita_veterinaria.sql
+@3_animale/6_prescrizione_animale.sql
+@3_animale/7_produzione_animale.sql
 
 --Sezione: 4_agricoltura
 
@@ -55,9 +53,8 @@ SET SQLBLANKLINES ON
 @5_associazioni/10_tipo_coltura_tipo_prodotto.sql
 @5_associazioni/11_ciclo_colt_utilizza_semi_missione.sql
 @5_associazioni/12_ciclo_colt_utilizza_produzione_agricola.sql
-@5_associazioni/13_tipo_coltura_usa_semi_di_tipo.sql
-@5_associazioni/14_blocco_animale_contiene_sensore.sql
-@5_associazioni/15_cella_idr_contiene_sensore.sql
+@5_associazioni/13_blocco_animale_contiene_sensore.sql
+@5_associazioni/14_cella_idr_contiene_sensore.sql
 
 
 COMMIT;

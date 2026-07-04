@@ -42,11 +42,14 @@ INSERT INTO TIPO_PRODOTTO VALUES ('Semi di spinaci', NULL, NULL, NULL, NULL, 'kg
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di carota', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di zucchina', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di cetriolo', NULL, NULL, NULL, NULL, 'kg', 0);
+INSERT INTO TIPO_PRODOTTO VALUES ('Semi di melanzana', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di peperone', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di fagiolo', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di ceci', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di lenticchie', NULL, NULL, NULL, NULL, 'kg', 0);
+INSERT INTO TIPO_PRODOTTO VALUES ('Semi di piselli', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Semi di soia', NULL, NULL, NULL, NULL, 'kg', 0);
+INSERT INTO TIPO_PRODOTTO VALUES ('Semi di fragola', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Spore di funghi coltivati', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Talee di patata', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Soluzione nutritiva idroponica base', NULL, NULL, NULL, NULL, 'L', 0);
@@ -71,12 +74,6 @@ INSERT INTO TIPO_PRODOTTO VALUES ('Integratore vitaminico veterinario', NULL, NU
 INSERT INTO TIPO_PRODOTTO VALUES ('Reidratante orale veterinario', NULL, NULL, NULL, NULL, 'g', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Probiotico veterinario', NULL, NULL, NULL, NULL, 'g', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Pomata cicatrizzante veterinaria', NULL, NULL, NULL, NULL, 'g', 0);
-INSERT INTO TIPO_PRODOTTO VALUES ('Vaccino bovini clostridiosi', NULL, NULL, NULL, NULL, 'mL', 0);
-INSERT INTO TIPO_PRODOTTO VALUES ('Vaccino bovini mastite', NULL, NULL, NULL, NULL, 'mL', 0);
-INSERT INTO TIPO_PRODOTTO VALUES ('Vaccino pollame Newcastle', NULL, NULL, NULL, NULL, 'mL', 0);
-INSERT INTO TIPO_PRODOTTO VALUES ('Vaccino pollame bronchite infettiva', NULL, NULL, NULL, NULL, 'mL', 0);
-INSERT INTO TIPO_PRODOTTO VALUES ('Vaccino conigli mixomatosi', NULL, NULL, NULL, NULL, 'mL', 0);
-INSERT INTO TIPO_PRODOTTO VALUES ('Vaccino conigli malattia emorragica', NULL, NULL, NULL, NULL, 'mL', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Lana ovina', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Pelle bovina', NULL, NULL, NULL, NULL, 'kg', 0);
 INSERT INTO TIPO_PRODOTTO VALUES ('Letame bovino', NULL, NULL, NULL, NULL, 'kg', 0);

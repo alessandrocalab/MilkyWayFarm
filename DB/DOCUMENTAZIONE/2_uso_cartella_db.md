@@ -44,7 +44,7 @@ Lo script popola le principali tabelle del database con dati fittizi riguardanti
 
 - prodotti e sostanze;
 - strutture, blocchi, celle e sensori;
-- tipi animali, animali, stadi, diete, vaccini, visite e prescrizioni;
+- tipi animali, animali, stadi, diete, visite e prescrizioni;
 - modalita di coltivazione, tipi di coltura e semi missione;
 - associazioni tra prodotti, sostanze, diete, colture, blocchi e modalita.
 

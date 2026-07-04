@@ -1,0 +1,3 @@
+--Attivato se la data di produzione 
+--non è valida rispetto quella di allocazione
+--dell'animale nel blocco relativo

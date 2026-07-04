@@ -94,7 +94,7 @@ Componente chimico o biologico presente nei prodotti, ad esempio allergeni, into
 
 ## Stadio di crescita
 
-Fase della vita di un animale, ad esempio vitello, giovane, adulto, pulcino o cucciolo. Influenza dieta, vaccinazioni, prodotti generabili e vincoli biologici.
+Fase della vita di un animale, ad esempio vitello, giovane, adulto, pulcino o cucciolo. Influenza dieta, prodotti generabili e vincoli biologici.
 
 ## Struttura
 
@@ -107,14 +107,6 @@ Categoria biologica dell'animale, come bovino, capra, gallina o coniglio. Defini
 ## Tipo sensore
 
 Modello tecnico di sensore, identificato da produttore e modello. Definisce grandezza misurata, unita di misura, valore minimo, valore massimo, precisione e frequenza.
-
-## Vaccinazione
-
-Somministrazione di un vaccino a un animale in una certa data.
-
-## Vaccino
-
-Trattamento sanitario previsto per un tipo animale e uno stadio di crescita. Puo avere un vaccino propedeutico.
 
 ## Visita veterinaria
 

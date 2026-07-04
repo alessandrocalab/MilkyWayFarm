@@ -1,0 +1,3 @@
+--Attivato se la visita veterinaria è precedente
+--all'ingresso dell'animale visitato o successiva
+--all'uscita dell'animale

@@ -1,0 +1,2 @@
+--Attivato se la data non è compatibile
+--con quella di fine del ciclo coltivazione

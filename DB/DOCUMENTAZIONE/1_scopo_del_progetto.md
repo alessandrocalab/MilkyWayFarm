@@ -31,7 +31,7 @@ Per l'ESA un sistema di questo tipo puo essere utile come supporto alla progetta
 - **monitorare l'autosufficienza alimentare**, verificando quanta produzione agricola e animale puo essere ottenuta nel tempo;
 - **ottimizzare risorse critiche**, come semi, acqua, energia, soluzione nutritiva e fertilizzanti biologici;
 - **garantire tracciabilita**, collegando ogni produzione al ciclo, agli input usati e all'ambiente in cui e stata generata;
-- **controllare il benessere biologico**, registrando visite veterinarie, prescrizioni, vaccinazioni e compatibilita tra animali, blocchi e stadi di crescita;
+- **controllare il benessere biologico**, registrando visite veterinarie, prescrizioni e compatibilita tra animali, blocchi e stadi di crescita;
 - **valutare le condizioni ambientali**, tramite sensori di temperatura, umidita ed energia;
 - **supportare decisioni operative**, ad esempio scegliere quali colture avviare, quali semi utilizzare o quando intervenire su un ambiente fuori range.
 

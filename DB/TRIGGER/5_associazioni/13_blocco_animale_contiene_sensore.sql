@@ -1,0 +1,2 @@
+--Attivato se la data di montaggio sensore
+--non è compatibile con quella di montaggio blocco

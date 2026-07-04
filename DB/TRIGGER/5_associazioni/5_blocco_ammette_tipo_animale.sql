@@ -1,0 +1,3 @@
+--Attivato se il blocco è di dimensioni minori
+--rispetto allo spazio minimo richiesto per 
+--il tipo animale
