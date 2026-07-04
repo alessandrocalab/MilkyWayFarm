@@ -1,4 +1,4 @@
---Attivato se il sensore non è collegato ad alcun blocco
+--Attivato se il sensore non è collegato ad alcuna cella o blocco
 --nella data di registrazione
 
 CREATE TRIGGER TGR_REGISTRAZIONE_SENSORE

@@ -6,7 +6,7 @@ Prodotto usato come risorsa alimentare o tecnica. Nel modello e rappresentato co
 
 ## Animale
 
-Singolo individuo allevato nella biofarm. Ogni animale ha un'etichetta identificativa, un tipo animale, dati anagrafici, sesso, data di ingresso ed eventuale data di uscita.
+Singolo individuo allevato nella biofarm. Ogni animale ha un'etichetta identificativa, un tipo animale, dati anagrafici e sesso. La sua presenza operativa nella farm è ricavata dalle allocazioni nei blocchi animali.
 
 ## Animale allocato in blocco
 

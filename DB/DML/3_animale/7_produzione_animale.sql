@@ -1,2 +1,20 @@
 --DATA_PRODUZIONE, NUMERO_BLOCCO, NOME_STRUTTURA, NOME_PRODOTTO, QUANTITA
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-04-15', '0001', 'Struttura Zootecnica', 'Pollina', 0.12);
+
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-06-01', '0002', 'Struttura Zootecnica', 'Letame bovino', 42.00);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-06-01', '0002', 'Struttura Zootecnica', 'Latte bovino', 18.00);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-06-01', '0002', 'Struttura Zootecnica', 'Latte caprino', 2.30);
+
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Letame bovino', 44.00);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Latte bovino', 19.50);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Pollina', 0.11);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Uova di gallina', 0.06);
+
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0003', 'Struttura Zootecnica', 'Letame bovino', 25.00);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0003', 'Struttura Zootecnica', 'Latte bovino', 20.00);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0003', 'Struttura Zootecnica', 'Latte caprino', 2.50);
+
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0002', 'Struttura Zootecnica', 'Pollina', 0.10);
+INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0002', 'Struttura Zootecnica', 'Uova di gallina', 0.06);
+
 COMMIT;

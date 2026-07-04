@@ -1,3 +1,106 @@
---Attivato se l'animale ha data uscita precedente a quella di ingresso
+--Attivato se i genitori non sono biologicamente compatibili
 
---Attivato se il genitore non è biologicamente compatibile
+CREATE TRIGGER TRG_ANIMALE_COMP_GENITORI
+BEFORE INSERT OR UPDATE ON ANIMALE
+FOR EACH ROW 
+
+DECLARE
+    TIPO_ANIMALE_G1 VARCHAR(60);
+    TIPO_ANIMALE_G2 VARCHAR(60);
+
+    GENITORE_INCOMPATIBILE EXCEPTION;
+BEGIN
+    --CONTROLLO GENITORE 1
+    IF :NEW.ETICHETTA_GENITORE_1 IS NOT NULL
+        THEN
+            SELECT NOME_TIPO_ANIMALE
+            INTO TIPO_ANIMALE_G1
+            FROM ANIMALE
+            WHERE ETICHETTA=:NEW.ETICHETTA_GENITORE_1;
+
+            IF TIPO_ANIMALE_G1!=:NEW.NOME_TIPO_ANIMALE
+                THEN
+                    RAISE GENITORE_INCOMPATIBILE;
+            END IF;
+    END IF;
+
+    --CONTROLLO GENITORE 2
+    IF :NEW.ETICHETTA_GENITORE_2 IS NOT NULL
+        THEN
+            SELECT NOME_TIPO_ANIMALE
+            INTO TIPO_ANIMALE_G2
+            FROM ANIMALE
+            WHERE ETICHETTA=:NEW.ETICHETTA_GENITORE_2;
+
+            IF TIPO_ANIMALE_G2!=:NEW.NOME_TIPO_ANIMALE
+                THEN
+                    RAISE GENITORE_INCOMPATIBILE;
+            END IF;
+    END IF;      
+
+EXCEPTION
+    WHEN GENITORE_INCOMPATIBILE
+        THEN
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'I genitori dell''animale sono biologicamente incompatibili'
+            );
+END;
+/
+
+
+
+--Attivato se l'animale è genitore di se stesso
+
+CREATE TRIGGER TRG_ANIMALE_GENITORE_SE_STESSO
+BEFORE INSERT OR UPDATE ON ANIMALE
+FOR EACH ROW
+
+DECLARE
+    GENITORE_SE_STESSO EXCEPTION;
+
+BEGIN
+    IF :NEW.ETICHETTA_GENITORE_1=:NEW.ETICHETTA
+        OR :NEW.ETICHETTA_GENITORE_2=:NEW.ETICHETTA
+        THEN
+            RAISE GENITORE_SE_STESSO;
+    END IF;
+
+EXCEPTION
+    WHEN GENITORE_SE_STESSO
+        THEN
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'L''animale non può essere genitore di se stesso'
+            );
+
+END;
+/
+
+
+--Attivato se l'animale ha due genitori con stessa etichetta
+
+CREATE TRIGGER TRG_ANIMALE_GENITORE_ETICHETTA_DUPLICATA
+BEFORE INSERT OR UPDATE ON ANIMALE
+FOR EACH ROW
+
+DECLARE
+    GENITORE_ETICHETTA_DUPLICATA EXCEPTION;
+
+BEGIN
+    IF :NEW.ETICHETTA_GENITORE_1 IS NOT NULL
+        AND :NEW.ETICHETTA_GENITORE_1=:NEW.ETICHETTA_GENITORE_2
+        THEN
+            RAISE GENITORE_ETICHETTA_DUPLICATA;
+    END IF;
+
+EXCEPTION
+    WHEN GENITORE_ETICHETTA_DUPLICATA
+        THEN
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'I genitore dell''animale hanno la stessa etichetta'
+            );
+
+END;
+/

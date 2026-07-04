@@ -47,6 +47,8 @@ SET SQLBLANKLINES ON
 @5_associazioni/8_cella_idr_rispetta_mod_colt.sql
 @5_associazioni/9_tipo_colt_accetta_mod_colt.sql
 @5_associazioni/10_tipo_coltura_tipo_prodotto.sql
+@5_associazioni/11_ciclo_colt_utilizza_semi_missione.sql
+@5_associazioni/12_ciclo_colt_utilizza_produzione_agricola.sql
 @5_associazioni/14_blocco_animale_contiene_sensore.sql
 @5_associazioni/15_cella_idr_contiene_sensore.sql
 

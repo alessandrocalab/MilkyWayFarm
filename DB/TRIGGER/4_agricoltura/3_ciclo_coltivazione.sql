@@ -1,11 +1,105 @@
 --Attivato se la cella idroponica
---non rispetta la modalità di coltivazione
+--non rispetta la modalità di coltivazione del ciclo
+
+CREATE TRIGGER TRG_CICLO_COLTIVAZIONE_RISPETTATATO_DA_CELLA
+BEFORE INSERT OR UPDATE ON CICLO_COLTIVAZIONE 
+FOR EACH ROW 
+
+DECLARE 
+    IS_VALID NUMBER(1,0);
+    NON_RISPETTATA EXCEPTION;
+
+BEGIN 
+
+    SELECT COUNT(*)
+    INTO IS_VALID
+    FROM CELLA_IDR_RISPETTA_MOD_COLT CIR
+    WHERE CIR.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+    AND CIR.CODICE_CELLA_IDR=:NEW.CODICE_CELLA_IDR
+    AND CIR.NOME_MOD_COLTIVAZIONE=:NEW.NOME_MODALITA_COLTIVAZIONE;
+
+    IF IS_VALID = 0
+        THEN 
+            RAISE NON_RISPETTATA;
+    END IF;
+
+EXCEPTION 
+    WHEN NON_RISPETTATA
+        THEN
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'La cella idroponica non rispetta la modalita di coltivazione del ciclo inserito'
+            );
+END;
+/
+
 
 --Attivato se la cella idroponica
 --è impegnata in un altro ciclo 
 
+CREATE TRIGGER TRG_CICLO_COLTIVAZIONE_CELLA_IMPEGNATA
+AFTER INSERT OR UPDATE ON CICLO_COLTIVAZIONE 
+--AFTER INSERT POICHÈ È NECESSARIO RICERCARE 
+--NELLA STESSA TABELLA DI INSERIMENTO
+
+DECLARE 
+    IS_INVALID NUMBER(1,0);
+    CELLA_IMPEGNATA EXCEPTION;
+
+BEGIN
+
+    SELECT COUNT(*)
+    INTO IS_INVALID
+    FROM CICLO_COLTIVAZIONE C1
+    JOIN CICLO_COLTIVAZIONE C2
+    ON C1.CODICE_CELLA_IDR=C2.CODICE_CELLA_IDR
+    AND C1.NOME_STRUTTURA=C2.NOME_STRUTTURA
+    --prottetto da PK, eviterà confronti con se stesso
+    AND C1.DATA_INIZIO < C2.DATA_INIZIO
+    AND(
+        C1.DATA_FINE_EFFETTIVA IS NULL 
+        OR C1.DATA_FINE_EFFETTIVA >= C2.DATA_INIZIO
+    );
+
+    IF IS_INVALID <> 0
+        THEN
+            RAISE CELLA_IMPEGNATA;
+    END IF;
+
+EXCEPTION 
+    WHEN CELLA_IMPEGNATA
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'La cella idroponica è già impegnata in un altro ciclo'
+            );
+END;
+/
+
 --Attivato se la data fine è precedente 
 --a quella di inizio
 
---Attivato se non il nuovo ciclo non è
---più recente dell'ultimo (greedy choice)
+
+CREATE TRIGGER TRG_CICLO_COLTIVAZIONE_FINE_PRIMA_INIZIO
+BEFORE INSERT OR UPDATE ON CICLO_COLTIVAZIONE
+FOR EACH ROW 
+
+DECLARE
+    DATA_ERRATA EXCEPTION;
+
+BEGIN 
+    IF :NEW.DATA_INIZIO > :NEW.DATA_FINE_EFFETTIVA
+        THEN 
+            RAISE DATA_ERRATA;
+    END IF;
+
+EXCEPTION
+    WHEN DATA_ERRATA
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'Il ciclo di coltivazione termina prima di iniziare'
+            );
+END;
+/
+
