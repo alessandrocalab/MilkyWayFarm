@@ -22,9 +22,11 @@ BEGIN
         OR S.DATA_TERMINAZIONE > :NEW.DATA_MONTAGGIO
     )
     AND(
-        S.DATA_TERMINAZIONE IS NULL 
-        OR :NEW.DATA_SMONTAGGIO IS NULL
-        OR S.DATA_TERMINAZIONE >= :NEW.DATA_SMONTAGGIO
+        S.DATA_TERMINAZIONE IS NULL
+        OR(
+            :NEW.DATA_SMONTAGGIO IS NOT NULL
+            AND S.DATA_TERMINAZIONE >= :NEW.DATA_SMONTAGGIO
+        )
     );
 
     IF IS_VALID = 0
@@ -165,6 +167,51 @@ EXCEPTION
             RAISE_APPLICATION_ERROR(
                 -20003,
                 'Per terminare un blocco animale è necessario rimuovere gli animali al suo interno'
+            );
+END;
+/
+
+
+
+--Attivato se vi sono
+--ancora sensori attivi
+
+CREATE TRIGGER TRG_BLOCCO_ANIMALE_SENSORI_PRESENTI
+BEFORE INSERT OR UPDATE ON BLOCCO_ANIMALE
+FOR EACH ROW
+
+DECLARE
+    IS_INVALID NUMBER(6,0);
+    SENSORE_PRESENTE EXCEPTION;
+
+BEGIN
+
+    IF :NEW.DATA_SMONTAGGIO IS NOT NULL
+        THEN
+
+            SELECT COUNT(*)
+            INTO IS_INVALID
+            FROM BLOCCO_ANIMALE_CONTIENE_SENSORE AAB
+            WHERE AAB.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+            AND AAB.NUMERO_BLOCCO=:NEW.NUMERO_BLOCCO
+            AND(
+                AAB.DATA_SMONTAGGIO IS NULL
+                OR AAB.DATA_SMONTAGGIO > :NEW.DATA_SMONTAGGIO
+            );
+
+            IF IS_INVALID <> 0
+                THEN 
+                    RAISE SENSORE_PRESENTE;
+            END IF;
+
+    END IF;
+
+EXCEPTION
+    WHEN SENSORE_PRESENTE
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20003,
+                'Per terminare un blocco animale è necessario rimuovere i sensori al suo interno'
             );
 END;
 /
