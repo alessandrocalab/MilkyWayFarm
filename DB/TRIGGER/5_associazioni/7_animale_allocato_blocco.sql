@@ -124,7 +124,7 @@ BEGIN
     AND(
         :NEW.DATA_DEALLOCAZIONE IS NULL 
         OR BA.DATA_SMONTAGGIO IS NULL 
-        OR DATA_DEALLOCAZIONE <= DATA_SMONTAGGIO
+        OR :NEW.DATA_DEALLOCAZIONE <= BA.DATA_SMONTAGGIO
     );
 
     IF IS_VALID = 0
@@ -136,7 +136,7 @@ EXCEPTION
     WHEN BLOCCO_INESISTENTE
         THEN 
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20003,
                 'Il blocco selezionato non esiste nelle date di allcoazione/deallocazione inserite'
             );
 END;
@@ -165,9 +165,14 @@ EXCEPTION
     WHEN DEALLOCAZIONE_INCOMPATIBILE
         THEN 
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20004,
                 'La data di deallocazione è precedente a quella
                 di allocazione'
             );
 END;
 /
+
+
+--Attivato se l'animale
+--è gia allocato in un altro blocco
+

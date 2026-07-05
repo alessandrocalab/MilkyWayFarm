@@ -31,7 +31,7 @@ EXCEPTION
     WHEN ANIMALE_NON_ALLOCATO
         THEN
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20003,
                 'La visita è effettuata in una data dove l''animale non è allocato in nessun blocco'
             );
 

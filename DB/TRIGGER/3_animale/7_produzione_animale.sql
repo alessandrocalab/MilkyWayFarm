@@ -49,7 +49,7 @@ EXCEPTION
     WHEN DATA_INVALIDA
         THEN 
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20003,
                 'Non vi è alcun animale nel blocco capace di produrre quel prodotto nella data inserita'
             );
 END;

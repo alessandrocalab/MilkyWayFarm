@@ -16,4 +16,11 @@ INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000C', 'Struttura Agricola II',
 INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000C', 'Struttura Agricola II', 'Organica letame bovino');
 INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000C', 'Struttura Agricola II', 'Organica letame ovino');
 
+INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000A', 'Struttura Mista', 'Idro foglia base');
+INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000A', 'Struttura Mista', 'Idro frutto concentrata');
+INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000A', 'Struttura Mista', 'Organica letame bovino');
+
+INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000B', 'Struttura Mista', 'Idro cereali base');
+INSERT INTO CELLA_IDR_RISPETTA_MOD_COLT VALUES ('000B', 'Struttura Mista', 'Idro foglia base');
+
 COMMIT;

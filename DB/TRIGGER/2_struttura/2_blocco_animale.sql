@@ -1,150 +1,170 @@
---ATTIVATO SE VIENE TERMINATO UN BLOCCO ANIMALE
---CON ANIMALI ALL'INTERNO OPPURE PRIMA
---DELLA SUA DATA DI ATTIVAZIONE
+--Attivato se la data di montaggio
+--del blocco animale è precedente a quella
+--di attivazione della struttura
 
---ATTIVATO SE OCCUPA PIU SUPERFICIE DI QUELLA DISPONIBILE NELLA STRUTTURA
+CREATE TRIGGER TRG_BLOCCO_ANIMALE_DATA_STRUTTURA
+BEFORE INSERT OR UPDATE ON BLOCCO_ANIMALE
+FOR EACH ROW
 
---ATTIVATO SE LA DATA DI MONTAGGIO È PIU VECCHIA DI QUELLA PIÙ RECENTE DI UN ALTRO BLOCCO/CELLA
---NELLA STESSA STRUTTURA
+DECLARE 
+    IS_VALID NUMBER(1,0);
+    DATA_NON_COMPATIBILE EXCEPTION;
 
---ATTIVATO SE LA DATA DI MONTAGGIO È MENO RECENTE
---DI QUELLA DI ATTIVAZIONE DELLA STRUTTURA
+BEGIN
 
-CREATE OR REPLACE TRIGGER TRG_BLOCCO_ANIMALE
+    SELECT COUNT(*)
+    INTO IS_VALID
+    FROM STRUTTURA S
+    WHERE S.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+    AND S.DATA_ATTIVAZIONE <= :NEW.DATA_MONTAGGIO
+    AND(
+        S.DATA_TERMINAZIONE IS NULL 
+        OR S.DATA_TERMINAZIONE > :NEW.DATA_MONTAGGIO
+    )
+    AND(
+        S.DATA_TERMINAZIONE IS NULL 
+        OR :NEW.DATA_SMONTAGGIO IS NULL
+        OR S.DATA_TERMINAZIONE >= :NEW.DATA_SMONTAGGIO
+    );
+
+    IF IS_VALID = 0
+        THEN 
+            RAISE DATA_NON_COMPATIBILE;
+    END IF;
+
+EXCEPTION
+    WHEN DATA_NON_COMPATIBILE
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20003,
+                'Non è possibile inserire una data di montaggio meno recente di quella di attivazione della struttura ospitante'
+            );
+END;
+/
+
+
+--Attivato se il blocco animale
+--occupa più superficie di quella
+--disponibile nella struttura
+
+CREATE TRIGGER TRG_BLOCCO_ANIMALE_SUPERFICIE_DISP
+AFTER INSERT OR UPDATE ON BLOCCO_ANIMALE
+
+DECLARE
+    IS_INVALID NUMBER(9,0);
+    SUPERFICIE_INSUFFICIENTE EXCEPTION;
+
+BEGIN
+
+    SELECT COUNT(*)
+    INTO IS_INVALID
+    FROM STRUTTURA S 
+    JOIN(
+        SELECT 
+            CI2.NOME_STRUTTURA,
+            CI2.DATA_MONTAGGIO AS ISTANTE,
+            SUM(CI.SUPERFICIE_MQ) AS SUPERFICIE_OCCUPATA
+
+        FROM ELEMENTI_PRODUTTIVI CI
+        JOIN ELEMENTI_PRODUTTIVI CI2
+        ON CI.NOME_STRUTTURA=CI2.NOME_STRUTTURA
+        WHERE CI.DATA_MONTAGGIO <= CI2.DATA_MONTAGGIO
+        AND(
+            CI.DATA_SMONTAGGIO IS NULL 
+            OR CI.DATA_SMONTAGGIO > CI2.DATA_MONTAGGIO
+        )
+        GROUP BY 
+            CI2.NOME_STRUTTURA,
+            CI2.DATA_MONTAGGIO
+    ) T
+    ON S.NOME_STRUTTURA=T.NOME_STRUTTURA
+    WHERE S.SUPERFICIE_MQ<T.SUPERFICIE_OCCUPATA;
+
+    IF IS_INVALID <> 0
+        THEN 
+            RAISE SUPERFICIE_INSUFFICIENTE;
+    END IF;
+
+EXCEPTION
+    WHEN SUPERFICIE_INSUFFICIENTE
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'La superficie del blocco animale supera quella disponibile della struttura in cui è contenuto'
+            );
+END;
+/
+
+
+--Attivato se la data di smontaggio
+--è precedente a quella di montaggio
+
+CREATE TRIGGER TRG_BLOCCO_ANIMALE_DATA_SMONTAGGIO
 BEFORE INSERT OR UPDATE ON BLOCCO_ANIMALE
 FOR EACH ROW
 
 DECLARE
-    NUMERO_ANIMALI NUMBER(6,0);
-    SUPERFICIE_STRUTTURA_DISPONIBILE NUMBER(8,2);
-    DATA_ULTIMO_BLOCCO DATE;
-    DATA_ATTIVAZIONE_STRUTTURA DATE;
+    DATA_SMONTAGGIO_NON_VALIDA EXCEPTION;
 
 BEGIN
-    --Controllo data struttura
-    SELECT DATA_ATTIVAZIONE
-    INTO DATA_ATTIVAZIONE_STRUTTURA
-    FROM STRUTTURA
-    WHERE STRUTTURA.NOME_STRUTTURA=:NEW.NOME_STRUTTURA;
 
-    IF   :NEW.DATA_MONTAGGIO < DATA_ATTIVAZIONE_STRUTTURA
-        THEN
-            RAISE_APPLICATION_ERROR(
-                -20001,
-                'Non è possibile inserire una data di montaggio meno recente di quella di attivazione della struttura ospitante'
-            );
-    END IF;
-
-
-
-    --Controllo data blocco/cella più recente
-    SELECT MAX(DATA_MONTAGGIO)
-    INTO DATA_ULTIMO_BLOCCO 
-    FROM(
-        SELECT MAX(DATA_MONTAGGIO) AS DATA_MONTAGGIO
-        FROM CELLA_IDROPONICA CI
-        WHERE CI.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-        
-        UNION 
-
-        SELECT MAX(DATA_MONTAGGIO) AS DATA_MONTAGGIO
-        FROM BLOCCO_ANIMALE BA
-        WHERE BA.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-        AND BA.NUMERO_BLOCCO<>:NEW.NUMERO_BLOCCO
-    );
-
-    IF DATA_ULTIMO_BLOCCO IS NOT NULL 
-        AND :NEW.DATA_MONTAGGIO < DATA_ULTIMO_BLOCCO 
-        THEN
-            RAISE_APPLICATION_ERROR(
-                -20001,
-                'Non è possibile inserire una data di montaggio meno recente dell’ultimo blocco nella stessa struttura'
-            );
-    END IF;
-
-
-    --Controllo superficie
-    SELECT S.SUPERFICIE_MQ - NVL((
-        SELECT SUM(SUPERFICIE_MQ)
-            FROM (
-                SELECT SUPERFICIE_MQ
-                FROM BLOCCO_ANIMALE BA
-                WHERE NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-                AND NUMERO_BLOCCO<>:NEW.NUMERO_BLOCCO
-                AND BA.DATA_MONTAGGIO <= :NEW.DATA_MONTAGGIO
-                AND (
-                    BA.DATA_SMONTAGGIO IS NULL
-                    OR BA.DATA_SMONTAGGIO >= :NEW.DATA_MONTAGGIO
-                )
-
-                UNION ALL
-
-                SELECT SUPERFICIE_MQ
-                FROM CELLA_IDROPONICA CI
-                WHERE NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-                AND CI.DATA_MONTAGGIO <= :NEW.DATA_MONTAGGIO
-                AND (
-                    CI.DATA_SMONTAGGIO IS NULL
-                    OR CI.DATA_SMONTAGGIO >= :NEW.DATA_MONTAGGIO
-                )
-
-            )
-        ), 0)
-    INTO SUPERFICIE_STRUTTURA_DISPONIBILE
-    FROM STRUTTURA S
-    WHERE S.NOME_STRUTTURA=:NEW.NOME_STRUTTURA;
-
-    IF :NEW.SUPERFICIE_MQ > SUPERFICIE_STRUTTURA_DISPONIBILE
-        THEN
-
-            RAISE_APPLICATION_ERROR(
-                    -20001,
-                    'La superficie del blocco animale supera quella disponibile della struttura in cui è contenuto'
-                );
-    END IF;
-
-
-
-
-    
-    IF :NEW.DATA_SMONTAGGIO IS NOT NULL --CONTROLLO SU DATA SMONTAGGIO
+    IF :NEW.DATA_SMONTAGGIO IS NOT NULL
+        AND :NEW.DATA_SMONTAGGIO < :NEW.DATA_MONTAGGIO
         THEN 
+            RAISE DATA_SMONTAGGIO_NON_VALIDA;
+    END IF;
 
-            IF :NEW.DATA_SMONTAGGIO < :NEW.DATA_MONTAGGIO
-                THEN
+EXCEPTION
+    WHEN DATA_SMONTAGGIO_NON_VALIDA
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20004,
+                'Non è possibile inserire una data di smontaggio precedente a quella di montaggio'
+            );
+END;
+/
 
-                RAISE_APPLICATION_ERROR(
-                    -20004,
-                    'Non è possibile inserire una data di terminazione minore di quella di attivazione'
-                );
 
-            ELSE
+--Attivato se viene smontato
+--un blocco animale con animali
+--ancora al suo interno
+
+CREATE TRIGGER TRG_BLOCCO_ANIMALE_ANIMALI_PRESENTI
+BEFORE INSERT OR UPDATE ON BLOCCO_ANIMALE
+FOR EACH ROW
+
+DECLARE
+    IS_INVALID NUMBER(6,0);
+    ANIMALI_PRESENTI EXCEPTION;
+
+BEGIN
+
+    IF :NEW.DATA_SMONTAGGIO IS NOT NULL
+        THEN
 
             SELECT COUNT(*)
-            INTO NUMERO_ANIMALI
+            INTO IS_INVALID
             FROM ANIMALE_ALLOCATO_BLOCCO AAB
             WHERE AAB.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
             AND AAB.NUMERO_BLOCCO=:NEW.NUMERO_BLOCCO
-                AND(
-                    AAB.DATA_DEALLOCAZIONE IS NULL
-                    OR AAB.DATA_DEALLOCAZIONE > :NEW.DATA_SMONTAGGIO
-                );
+            AND(
+                AAB.DATA_DEALLOCAZIONE IS NULL
+                OR AAB.DATA_DEALLOCAZIONE > :NEW.DATA_SMONTAGGIO
+            );
 
-           
-
-            IF NUMERO_ANIMALI > 0 
-                THEN
-
-                RAISE_APPLICATION_ERROR(
-                    -20003,
-                    'Per terminare un blocco animale è necessario rimuovere gli animali al suo interno'
-                );
-
-                END IF;
+            IF IS_INVALID <> 0
+                THEN 
+                    RAISE ANIMALI_PRESENTI;
             END IF;
-        END IF;
-   
+
+    END IF;
+
+EXCEPTION
+    WHEN ANIMALI_PRESENTI
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20003,
+                'Per terminare un blocco animale è necessario rimuovere gli animali al suo interno'
+            );
 END;
-
-
 /

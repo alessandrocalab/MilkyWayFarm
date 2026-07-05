@@ -1,7 +1,7 @@
 --Attivato se la data non è compatibile
 --con quella di fine del ciclo coltivazione
 
-CREATE TRIGGER TRG_PRODUZIONE_AGRICOLA
+CREATE TRIGGER TRG_PRODUZIONE_AGRICOLA_DATA
 BEFORE INSERT OR UPDATE ON PRODUZIONE_AGRICOLA
 FOR EACH ROW 
 
@@ -17,10 +17,7 @@ BEGIN
     WHERE CC.DATA_INIZIO=:NEW.DATA_INIZIO_CICLO_COLTIVAZIONE
     AND CC.CODICE_CELLA_IDR=:NEW.CODICE_CELLA_IDR
     AND CC.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
-    AND (
-        CC.DATA_FINE_EFFETTIVA IS NULL 
-        OR CC.DATA_FINE_EFFETTIVA < :NEW.DATA_PRODUZIONE_AGRICOLA
-    );
+    AND CC.DATA_FINE_EFFETTIVA <= :NEW.DATA_PRODUZIONE_AGRICOLA; 
 
     IF IS_INVALID <> 0
         THEN
@@ -31,9 +28,51 @@ EXCEPTION
     WHEN DATA_INVALIDA
         THEN
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20003,
                 'La data produzione agricola non è valida rispetto quella
                 del ciclo coltivazione associato'
+            );
+END;
+/
+
+--Attivato se viene prodotto
+--un prodotto non comptabili
+--con i semi piantati
+
+CREATE TRIGGER TRG_PRODUZIONE_AGRICOLA_PRODOTTO
+BEFORE INSERT OR UPDATE ON PRODUZIONE_AGRICOLA
+FOR EACH ROW 
+
+DECLARE
+    IS_VALID NUMBER(1,0);
+    PRODOTTO_INCOMPATIBILE EXCEPTION;
+
+BEGIN
+    
+    SELECT COUNT(*)
+    INTO IS_VALID
+    FROM TIPO_COLTURA_TIPO_PRODOTTO TT 
+    WHERE TT.NOME_TIPO_COLTURA=(
+        SELECT NOME_TIPO_COLTURA
+        FROM CICLO_COLTIVAZIONE CC
+        WHERE CC.DATA_INIZIO=:NEW.DATA_INIZIO_CICLO_COLTIVAZIONE
+        AND CC.CODICE_CELLA_IDR=:NEW.CODICE_CELLA_IDR
+        AND CC.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+    )
+    AND TT.NOME_PRODOTTO=:NEW.NOME_PRODOTTO;
+    
+    IF IS_VALID = 0 
+        THEN 
+            RAISE PRODOTTO_INCOMPATIBILE;
+    END IF;
+
+EXCEPTION 
+    WHEN PRODOTTO_INCOMPATIBILE
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'Il prodotto della produzione agricola non
+                è compatibile con il tipo di coltivazione'
             );
 END;
 /

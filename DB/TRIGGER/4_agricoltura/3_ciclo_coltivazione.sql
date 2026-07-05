@@ -16,7 +16,7 @@ BEGIN
     FROM CELLA_IDR_RISPETTA_MOD_COLT CIR
     WHERE CIR.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
     AND CIR.CODICE_CELLA_IDR=:NEW.CODICE_CELLA_IDR
-    AND CIR.NOME_MOD_COLTIVAZIONE=:NEW.NOME_MODALITA_COLTIVAZIONE;
+    AND CIR.NOME_MOD_COLTIVAZIONE=:NEW.NOME_MOD_COLTIVAZIONE;
 
     IF IS_VALID = 0
         THEN 
@@ -97,9 +97,91 @@ EXCEPTION
     WHEN DATA_ERRATA
         THEN 
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20004,
                 'Il ciclo di coltivazione termina prima di iniziare'
             );
 END;
 /
 
+
+
+--Attivato se la coltura non accetta
+--il tipo di coltivazione
+
+CREATE TRIGGER TRG_CICLO_COLTIVAZIONE_COLTURA_MOD
+BEFORE INSERT OR UPDATE ON CICLO_COLTIVAZIONE 
+FOR EACH ROW 
+
+DECLARE
+    IS_VALID NUMBER(1,0);
+    MOD_COLT_NON_ACCETTATA EXCEPTION;
+
+BEGIN 
+
+    SELECT COUNT(*)
+    INTO IS_VALID 
+    FROM TIPO_COLT_ACCETTA_MOD_COLT TCA 
+    WHERE TCA.NOME_TIPO_COLTURA=:NEW.NOME_TIPO_COLTURA 
+    AND TCA.NOME_MODALITA_COLTIVAZIONE=:NEW.NOME_MOD_COLTIVAZIONE;
+
+    IF IS_VALID = 0
+        THEN 
+            RAISE MOD_COLT_NON_ACCETTATA;
+    END IF;
+
+EXCEPTION
+    WHEN MOD_COLT_NON_ACCETTATA
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'Il tipo di coltura non accetta il
+                tipo di modalità coltivazione'
+            );
+END;
+/
+
+
+--Attivato se la cella idroponica
+--non è montata durante il ciclo
+
+CREATE TRIGGER TRG_CICLO_COLTIVAZIONE_CELLA_MONTATA
+BEFORE INSERT OR UPDATE ON CICLO_COLTIVAZIONE 
+FOR EACH ROW 
+
+DECLARE
+    IS_VALID NUMBER(1,0);
+    CELLA_SMONTATA EXCEPTION;
+
+BEGIN 
+
+    SELECT COUNT(*)
+    INTO IS_VALID 
+    FROM CELLA_IDROPONICA CI 
+    WHERE CI.CODICE_CELLA_IDR=:NEW.CODICE_CELLA_IDR
+    AND CI.NOME_STRUTTURA=:NEW.NOME_STRUTTURA
+    AND CI.DATA_MONTAGGIO <= :NEW.DATA_INIZIO
+    AND(
+        CI.DATA_SMONTAGGIO IS NULL 
+        OR CI.DATA_SMONTAGGIO > :NEW.DATA_INIZIO
+    )
+    AND(
+        CI.DATA_SMONTAGGIO IS NULL 
+        OR :NEW.DATA_FINE_EFFETTIVA IS NULL 
+        OR CI.DATA_SMONTAGGIO >= :NEW.DATA_FINE_EFFETTIVA
+    );
+
+    IF IS_VALID = 0
+        THEN 
+            RAISE CELLA_SMONTATA;
+    END IF;
+
+EXCEPTION
+    WHEN CELLA_SMONTATA
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'La cella idroponica non è
+                montata durante il ciclo'
+            );
+END;
+/

@@ -40,7 +40,7 @@ EXCEPTION
         THEN
 
         RAISE_APPLICATION_ERROR(
-            -20001,
+            -20005,
             'Un prodotto edibile deve avere tutti i valori nutrizionali'
         );
 
@@ -48,7 +48,7 @@ EXCEPTION
         THEN
             
         RAISE_APPLICATION_ERROR(
-            -20002,
+            -20001,
             'Un prodotto NON edibile non può avere valori nutrizionali'
         );
 

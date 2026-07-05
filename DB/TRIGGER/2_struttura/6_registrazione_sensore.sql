@@ -53,7 +53,7 @@ EXCEPTION
         THEN
 
         RAISE_APPLICATION_ERROR(
-            -20001,
+            -20003,
             'La registrazione sensore ha una data non compatabile con alcuna allocazione di quest ultimo'
         );
 END;

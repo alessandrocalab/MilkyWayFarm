@@ -112,6 +112,16 @@ SET SQLBLANKLINES ON
 @DML/5_associazioni/13_blocco_animale_contiene_sensore.sql
 @DML/5_associazioni/14_cella_idr_contiene_sensore.sql
 
+--Sezione: VISTA
+
+@VISTA/1_semi_missione_utilizzati.sql
+@VISTA/2_semi_misisone_disponibili.sql
+@VISTA/3_semi_produzione_agricola_utilizzati.sql
+@VISTA/4_semi_produzione_agricola_disponibili.sql
+@VISTA/5_semi_disponibili.sql
+@VISTA/6_allocazioni_sensori.sql
+@VISTA/7_elementi_produttivi.sql
+
 --Sezione: TRIGGER
 
 
