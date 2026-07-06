@@ -18,8 +18,6 @@ BEGIN
     END IF;
 
 
-    DELETE FROM GIORNI_TEMP;
-
     FOR DELTA IN 0 .. (DATA_FINE-DATA_INIZIO) LOOP 
 
         INSERT INTO GIORNI_TEMP VALUES (
@@ -99,7 +97,6 @@ BEGIN
 
     END LOOP;
 
-    COMMIT;
 
 EXCEPTION 
     WHEN DATA_NON_VALIDA
@@ -110,9 +107,5 @@ EXCEPTION
                 'La data fine è precedente alla data inizio'
             );
 
-    WHEN OTHERS
-        THEN
-            ROLLBACK;
-            RAISE;
 END;
 /
