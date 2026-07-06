@@ -6,6 +6,10 @@ SET SQLBLANKLINES ON
 @../drop_all.sql
 
 
+--Sezione: 0_tmp
+
+@0_tmp/1_giorni_temp.sql
+
 --Sezione: 1_prodotto
 
 @1_prodotto/3_unita_di_misura.sql

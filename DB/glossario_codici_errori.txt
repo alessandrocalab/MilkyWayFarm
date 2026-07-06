@@ -5,3 +5,4 @@
 -20005 --Inserimento ommettendo un campo obbligatorio, selezionabile tra uno di 2 o più attributi
 
 -20006 --richieste quantità maggiori di quelle presenti in una tabella, in un procedura
+-20007 --Inserimento di dati fuori dal dominio di definizione, in una procedura

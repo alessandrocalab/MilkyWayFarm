@@ -11,6 +11,9 @@ SET SQLBLANKLINES ON
 @5_semi_disponibili.sql
 @6_allocazioni_sensori.sql
 @7_elementi_produttivi.sql
+@8_verifica_produzione_animale.sql
+@9_consumi_ciclo_coltivazione.sql
+@10_verifica_produzione_agricola.sql
 
 
 COMMIT;

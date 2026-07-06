@@ -54,7 +54,7 @@ Profilo tecnico con cui una coltura puo essere coltivata. Include parametri come
 
 ## Prescrizione animale
 
-Terapia o trattamento assegnato a un animale in seguito a una visita veterinaria. Include farmaco/prodotto, durata e quantita giornaliera.
+Terapia o trattamento assegnato a un animale in seguito a una visita veterinaria. Include il prodotto veterinario prescritto, durata e quantita giornaliera.
 
 ## Produzione agricola
 
