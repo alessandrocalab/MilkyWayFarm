@@ -181,7 +181,7 @@ EXCEPTION
     WHEN CELLA_SMONTATA
         THEN 
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20003,
                 'La cella idroponica non è
                 montata durante il ciclo'
             );

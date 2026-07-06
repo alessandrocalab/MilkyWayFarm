@@ -1,0 +1,171 @@
+--PERMETTE DI AVVIARE UN CICLO COLTIVAZIONE IN UNA
+--SPECIFICA CELLA IDROPONICA, SENZA PRECISARE LA
+--PROVENIENZA DEI SEMI, SARÀ IL SISTEMA A INDICARE
+--ALL'UTENTE I SEMI DA UTILIZZARE
+
+CREATE PROCEDURE INIZIA_CICLO_COLTIVAZIONE_SEMI_ATUOMATICI(
+    IN_DATA_INIZIO IN DATE, 
+    IN_CODICE_CELLA_IDR IN CHAR,
+    IN_NOME_STRUTTURA IN VARCHAR,
+    IN_MODALITA_COLTIVAZIONE IN VARCHAR,
+    IN_NOME_TIPO_COLTURA IN VARCHAR,
+    IN_QUANTITA_SEMI IN NUMBER
+)
+AS
+
+    CHECK_QUANTITA_SEMI NUMBER(1,0);
+    IN_NOME_SEMI VARCHAR(60);
+    SEMI_PRELEVATI NUMBER(6,2);
+    SEMI_DA_PRENDERE NUMBER(6,2);
+
+    SEMI_INSUFFICENTI EXCEPTION;
+    QUANTITA_SEMI_INAMMISSIBILE EXCEPTION;
+BEGIN
+
+    --O: VERIFICA QUANTITA SEMI DA PRENDERE
+    IF IN_QUANTITA_SEMI <=0
+        THEN 
+            RAISE QUANTITA_SEMI_INAMMISSIBILE;
+    END IF;
+
+    --1: RECUPERO IL NOME DEI SEMI DAL TIPO COLTURA
+    SELECT T.NOME_SEMI
+    INTO IN_NOME_SEMI
+    FROM TIPO_COLTURA T
+    WHERE NOME_TIPO_COLTURA=IN_NOME_TIPO_COLTURA;
+
+
+    --2: VERIFICHIAMO SE I SEMI RICHIESTI SONO DISPONIBILI
+    SELECT COUNT(*)
+    INTO CHECK_QUANTITA_SEMI
+    FROM SEMI_DISPONIBILI SM
+    WHERE NOME_SEMI=IN_NOME_SEMI
+    AND SM.SEMI_DISPONIBILI >= IN_QUANTITA_SEMI;
+
+    IF CHECK_QUANTITA_SEMI = 0
+        THEN
+            RAISE SEMI_INSUFFICENTI;
+    END IF;
+
+    --3: AVVIO IL CICLO COLTIVAZIONE, I TRIGGER VERIFICHERANNO SE POSSIBILE
+    INSERT INTO CICLO_COLTIVAZIONE VALUES(
+        IN_DATA_INIZIO,
+        IN_CODICE_CELLA_IDR,
+        IN_NOME_STRUTTURA,
+        NULL,
+        IN_MODALITA_COLTIVAZIONE,
+        IN_NOME_TIPO_COLTURA
+    );
+
+    --4: RENDIAMO EFFETTIVO L'UTILIZZO DEI SEMI
+    SEMI_DA_PRENDERE:=IN_QUANTITA_SEMI;
+
+    FOR RW IN(
+        SELECT *
+        FROM SEMI_MISSIONE_DISPONIBILI SM
+        WHERE SM.NOME_SEMI=IN_NOME_SEMI
+        AND SM.SEMI_DISPONIBILI > 0
+    )LOOP 
+        
+        IF RW.SEMI_DISPONIBILI >= SEMI_DA_PRENDERE 
+            THEN
+                SEMI_PRELEVATI:=SEMI_DA_PRENDERE;
+            ELSE
+                SEMI_PRELEVATI:=RW.SEMI_DISPONIBILI;
+        END IF;
+
+        SEMI_DA_PRENDERE:=SEMI_DA_PRENDERE-SEMI_PRELEVATI;
+
+        DBMS_OUTPUT.PUT_LINE('Presi semi missione, data arrivo: '|| RW.DATA_ARRIVO_SEMI);
+        DBMS_OUTPUT.PUT_LINE('quantita prelevata: '|| SEMI_PRELEVATI);
+
+        INSERT INTO CICLO_COLT_UTILIZZA_SEMI_MISSIONE VALUES(
+            IN_DATA_INIZIO,
+            IN_CODICE_CELLA_IDR,
+            IN_NOME_STRUTTURA,
+            RW.NOME_SEMI,
+            RW.DATA_ARRIVO_SEMI,
+            SEMI_PRELEVATI
+        );
+
+        IF SEMI_DA_PRENDERE = 0
+            THEN 
+                EXIT;
+        END IF;
+
+
+    END LOOP;
+
+    --SE NON BASTANO CONTROLLIAMO ANCHE TRA I SEMI DI PRODUZIONE AGRICOLA
+    IF SEMI_DA_PRENDERE <> 0
+            THEN 
+
+            FOR RW IN(
+                SELECT *
+                FROM SEMI_PRODUZIONE_AGRICOLA_DISPONIBILI PA
+                WHERE PA.NOME_SEMI=IN_NOME_SEMI
+                AND PA.SEMI_DISPONIBILI > 0
+            )LOOP 
+                
+                IF RW.SEMI_DISPONIBILI >= SEMI_DA_PRENDERE 
+                    THEN
+                        SEMI_PRELEVATI:=SEMI_DA_PRENDERE;
+                    ELSE
+                        SEMI_PRELEVATI:=RW.SEMI_DISPONIBILI;
+                END IF;
+
+                SEMI_DA_PRENDERE:=SEMI_DA_PRENDERE-SEMI_PRELEVATI;
+
+                DBMS_OUTPUT.PUT_LINE('Presi produzione agricola, data produzione: '|| RW.DATA_PRODUZIONE_AGRICOLA);
+                DBMS_OUTPUT.PUT_LINE('data inizio ciclo coltivazione: '|| RW.DATA_INIZIO_CICLO_COLTIVAZIONE);
+                DBMS_OUTPUT.PUT_LINE('codice cella idroponica: '|| RW.CODICE_CELLA_IDR);
+                DBMS_OUTPUT.PUT_LINE('nome struttura: '|| RW.NOME_STRUTTURA);
+                DBMS_OUTPUT.PUT_LINE('quantita prelevata: '|| SEMI_PRELEVATI);
+
+                INSERT INTO CICLO_COLT_UTILIZZA_PRODUZIONE_AGRICOLA VALUES (
+                    IN_DATA_INIZIO,
+                    IN_CODICE_CELLA_IDR,
+                    IN_NOME_STRUTTURA,
+                    RW.DATA_PRODUZIONE_AGRICOLA,
+                    RW.DATA_INIZIO_CICLO_COLTIVAZIONE,
+                    RW.CODICE_CELLA_IDR,
+                    RW.NOME_STRUTTURA,
+                    RW.NOME_SEMI,
+                    SEMI_PRELEVATI
+                );
+
+                IF SEMI_DA_PRENDERE = 0
+                    THEN 
+                        EXIT;
+                END IF;
+
+
+            END LOOP;
+    END IF;
+
+    COMMIT;
+
+EXCEPTION
+    WHEN SEMI_INSUFFICENTI
+        THEN
+            ROLLBACK;
+            RAISE_APPLICATION_ERROR(
+                -20006,
+                'Sono stati richiesti più semi di quelli disponibili'
+            );
+        
+    WHEN QUANTITA_SEMI_INAMMISSIBILE
+        THEN
+            ROLLBACK;
+            RAISE_APPLICATION_ERROR(
+                -20006,
+                'È stata selezionata una quantità semi
+                non positiva'
+            );
+
+    WHEN OTHERS
+        THEN
+            ROLLBACK;
+            RAISE;
+END;
+/

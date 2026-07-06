@@ -99,7 +99,7 @@ EXCEPTION
     WHEN SEMI_INCOMPATIBILI
         THEN
             RAISE_APPLICATION_ERROR(
-                -20001,
+                -20003,
                 'Sono inseriti semi non presenti
                 nella data di inizio del ciclo'
             );

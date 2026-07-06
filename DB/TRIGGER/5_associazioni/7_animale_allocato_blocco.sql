@@ -207,7 +207,7 @@ EXCEPTION
     WHEN GIA_ALLOCATO
         THEN 
             RAISE_APPLICATION_ERROR(
-                -20004,
+                -20001,
                 'L''animale è già allocato
                 in un altro blocco'
             );
