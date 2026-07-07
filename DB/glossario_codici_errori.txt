@@ -6,3 +6,5 @@
 
 -20006 --richieste quantità maggiori di quelle presenti in una tabella, in un procedura
 -20007 --Inserimento di dati fuori dal dominio di definizione, in una procedura
+-20008 --dati insufficenti per la procedura
+-20009 --operazioni di termianzione su un evento già terminato

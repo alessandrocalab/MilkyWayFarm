@@ -44,3 +44,46 @@ END;
 /
 
 
+--Attivato se vi è già un altra
+--dieta attiva
+
+CREATE TRIGGER TRG_STADIO_CRESCITA_PREVEDE_DIETA_UNICITA
+AFTER INSERT OR UPDATE ON STADIO_CRESCITA_PREVEDE_DIETA
+
+DECLARE 
+    IS_INVALID NUMBER(3,0);
+
+    DIETA_DOPPIA EXCEPTION;
+
+BEGIN 
+
+    SELECT COUNT(*)
+    INTO IS_INVALID
+    FROM STADIO_CRESCITA_PREVEDE_DIETA SC1
+    JOIN STADIO_CRESCITA_PREVEDE_DIETA SC2 
+    ON SC1.NOME_STADIO_CRESCITA=SC2.NOME_STADIO_CRESCITA
+    AND SC1.NOME_TIPO_ANIMALE=SC2.NOME_TIPO_ANIMALE
+    WHERE SC1.NOME_DIETA <> SC2.NOME_DIETA
+    AND SC1.DATA_INIZIO <= SC2.DATA_INIZIO
+    AND (
+        SC1.DATA_FINE IS NULL 
+        OR SC1.DATA_FINE >= SC2.DATA_INIZIO 
+    );
+
+    IF IS_INVALID <> 0 
+        THEN 
+            RAISE DIETA_DOPPIA;
+    END IF;
+
+EXCEPTION 
+    WHEN DIETA_DOPPIA
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'Vi è già una dieta attiva
+                per questo intervallo di tempo.
+                Si prega di utilizzare la procedura
+                di cambio dieta'
+            );
+END;
+/

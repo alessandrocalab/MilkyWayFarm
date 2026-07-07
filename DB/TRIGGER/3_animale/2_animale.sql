@@ -104,3 +104,44 @@ EXCEPTION
 
 END;
 /
+
+--Attivato se non vi è
+--una dieta per l'animale
+CREATE TRIGGER TRG_ANIMALE_NO_DIETA
+BEFORE INSERT OR UPDATE ON ANIMALE
+FOR EACH ROW
+
+DECLARE 
+    IS_INVALID NUMBER(2,0);
+    DIETA_ASSENTE EXCEPTION;
+
+BEGIN 
+    
+    SELECT COUNT(*)
+    INTO IS_INVALID 
+    FROM STADIO_CRESCITA SC
+    WHERE SC.NOME_TIPO_ANIMALE=:NEW.NOME_TIPO_ANIMALE
+    AND NOT EXISTS(
+        SELECT 1
+        FROM STADIO_CRESCITA_PREVEDE_DIETA SCPD
+        WHERE SCPD.NOME_STADIO_CRESCITA=SC.NOME_STADIO_CRESCITA
+        AND SCPD.NOME_TIPO_ANIMALE=SC.NOME_TIPO_ANIMALE
+    );
+
+    IF IS_INVALID <> 0 
+        THEN
+            RAISE DIETA_ASSENTE;
+    END IF;
+
+
+EXCEPTION 
+    WHEN DIETA_ASSENTE
+        THEN 
+            RAISE_APPLICATION_ERROR(
+                -20001,
+                'È necessarrio che vi sia una dieta per
+                ogni stadio crescita dell''animale per
+                porterlo inserire'
+            );
+END;
+/

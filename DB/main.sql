@@ -9,9 +9,10 @@ SET SQLBLANKLINES ON
 --Sezione: DDL
 
 
---Sezione: 0_tmp
+--Sezione: 0_extra
 
-@DDL/0_tmp/1_giorni_temp.sql
+@DDL/0_extra/1_giorni_temp.sql
+@DDL/0_extra/2_log_anomalie_sensori.sql
 
 --Sezione: 1_prodotto
 
@@ -116,18 +117,28 @@ SET SQLBLANKLINES ON
 @DML/5_associazioni/13_blocco_animale_contiene_sensore.sql
 @DML/5_associazioni/14_cella_idr_contiene_sensore.sql
 
---Sezione: VISTA
+--Sezione: 2_struttura
 
-@VISTA/1_semi_missione_utilizzati.sql
-@VISTA/2_semi_misisone_disponibili.sql
-@VISTA/3_semi_produzione_agricola_utilizzati.sql
-@VISTA/4_semi_produzione_agricola_disponibili.sql
-@VISTA/5_semi_disponibili.sql
-@VISTA/6_allocazioni_sensori.sql
-@VISTA/7_elementi_produttivi.sql
-@VISTA/8_verifica_produzione_animale.sql
-@VISTA/9_consumi_ciclo_coltivazione.sql
-@VISTA/10_verifica_produzione_agricola.sql
+@VISTE/2_struttura/1_allocazioni_sensori.sql
+@VISTE/2_struttura/2_elementi_produttivi.sql
+@VISTE/2_struttura/3_anomalia_sensore.sql
+
+--Sezione: 3_animale
+
+@VISTE/3_animale/1_verifica_produzione_animale.sql
+@VISTE/3_animale/2_produzione_animale_totale.sql
+
+--Sezione: 4_agricoltura
+
+@VISTE/4_agricoltura/1_semi_missione_utilizzati.sql
+@VISTE/4_agricoltura/2_semi_misisone_disponibili.sql
+@VISTE/4_agricoltura/3_semi_produzione_agricola_utilizzati.sql
+@VISTE/4_agricoltura/4_semi_produzione_agricola_disponibili.sql
+@VISTE/4_agricoltura/5_semi_disponibili.sql
+@VISTE/4_agricoltura/6_consumi_ciclo_coltivazione.sql
+@VISTE/4_agricoltura/7_verifica_produzione_agricola.sql
+@VISTE/4_agricoltura/8_consumi_ciclo_coltivazione_2.sql
+@VISTE/4_agricoltura/9_produzione_agricola_totale.sql
 
 --Sezione: TRIGGER
 
@@ -164,6 +175,37 @@ SET SQLBLANKLINES ON
 @TRIGGER/5_associazioni/12_ciclo_colt_utilizza_produzione_agricola.sql
 @TRIGGER/5_associazioni/13_blocco_animale_contiene_sensore.sql
 @TRIGGER/5_associazioni/14_cella_idr_contiene_sensore.sql
+
+--Sezione: PROCEDURE
+
+@PROCEDURE/1_inizia_ciclo_coltivazione_semi_automatici.sql
+@PROCEDURE/2_trasferisci_animale.sql
+@PROCEDURE/3_verifica_consumi_animali.sql
+@PROCEDURE/4_sposta_sensore.sql
+@PROCEDURE/5_compara_modalita_coltivazione.sql
+@PROCEDURE/6_bilancio.sql
+@PROCEDURE/7_registra_nuovo_animale.sql
+@PROCEDURE/8_cambia_dieta.sql
+@PROCEDURE/9_termina_ciclo_coltivazione.sql
+@PROCEDURE/10_controllo_anomalie_sensori.sql
+
+--Sezione: RUOLI
+
+@RUOLI/1_r_gestione_prodotti.sql
+@RUOLI/2_r_gestione_strutture.sql
+@RUOLI/3_r_gestione_animali.sql
+@RUOLI/4_r_gestione_agricola.sql
+
+--Sezione: UTENTI
+
+@UTENTI/addetto_strutture.sql
+@UTENTI/admin.sql
+@UTENTI/agronomo.sql
+@UTENTI/zootecnico.sql
+
+--Sezione: SCHEDULER
+
+@SCHEDULER/1_controllo_anomalie_sensori.sql
 
 
 COMMIT;

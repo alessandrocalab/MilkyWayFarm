@@ -6,9 +6,10 @@ SET SQLBLANKLINES ON
 @../drop_all.sql
 
 
---Sezione: 0_tmp
+--Sezione: 0_extra
 
-@0_tmp/1_giorni_temp.sql
+@0_extra/1_giorni_temp.sql
+@0_extra/2_log_anomalie_sensori.sql
 
 --Sezione: 1_prodotto
 
