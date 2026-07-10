@@ -188,6 +188,8 @@ SET SQLBLANKLINES ON
 @PROCEDURE/8_cambia_dieta.sql
 @PROCEDURE/9_termina_ciclo_coltivazione.sql
 @PROCEDURE/10_controllo_anomalie_sensori.sql
+@PROCEDURE/11_termina_allocazione_animale.sql
+@PROCEDURE/12_termina_allocazione_sensore.sql
 
 --Sezione: RUOLI
 

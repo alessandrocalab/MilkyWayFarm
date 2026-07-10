@@ -10,7 +10,10 @@ BEGIN
                     END;',
                     
         START_DATE=>SYSTIMESTAMP,
-        REPEAT_INTERVAL=>'FREQ=DAILY;BYHOUR=0;BYMINUTE=0;BYSECOND=0',
+        REPEAT_INTERVAL=>'FREQ=DAILY;
+                        BYHOUR=0;
+                        BYMINUTE=0;
+                        BYSECOND=0',
         ENABLED=>TRUE,
         COMMENTS=>'Controllo giornaliero anomalie sensori'
     );

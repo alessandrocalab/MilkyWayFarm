@@ -63,20 +63,4 @@ INSERT INTO MODALITA_COLTIVAZIONE VALUES (
     0.020
 );
 
-INSERT INTO MODALITA_COLTIVAZIONE VALUES (
-    'Organica letame ovino',
-    'Letame ovino',
-    6.2,
-    7.2,
-    290,
-    297,
-    55,
-    78,
-    0,
-    'LED_BIANCO',
-    0.038,
-    13,
-    0.015
-);
-
 COMMIT;

@@ -99,7 +99,7 @@ END;
 /
 
 --Attivato se vi sono incompatibilità
---sulle date di allocazione
+--sulle date di allocazione con il blocco animale
 
 CREATE TRIGGER TRG_ANIMALE_ALLOCATO_BLOCCO_DATE_BLOCCO
 BEFORE INSERT OR UPDATE ON ANIMALE_ALLOCATO_BLOCCO

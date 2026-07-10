@@ -7,17 +7,11 @@ INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-06-01', '0002', 'Struttura Zoo
 
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Letame bovino', 44.00);
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Latte bovino', 19.50);
-INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Pollina', 0.11);
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-09-15', '0002', 'Struttura Zootecnica', 'Uova di gallina', 0.06);
 
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0003', 'Struttura Zootecnica', 'Letame bovino', 25.00);
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0003', 'Struttura Zootecnica', 'Latte bovino', 20.00);
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0003', 'Struttura Zootecnica', 'Latte caprino', 2.50);
-
-INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0002', 'Struttura Zootecnica', 'Pollina', 0.10);
-INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-10', '0002', 'Struttura Zootecnica', 'Uova di gallina', 0.06);
-
-INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2025-12-20', '0002', 'Struttura Mista', 'Letame bovino', 24.00);
 
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-01-20', '0001', 'Struttura Mista', 'Pollina', 0.20);
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-01-20', '0001', 'Struttura Mista', 'Uova di gallina', 0.12);
@@ -25,9 +19,5 @@ INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-01-20', '0001', 'Struttura Mis
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-15', '0002', 'Struttura Mista', 'Letame bovino', 28.00);
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-15', '0002', 'Struttura Mista', 'Latte bovino', 17.50);
 INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-02-15', '0002', 'Struttura Mista', 'Latte caprino', 2.10);
-
-INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-05-20', '0002', 'Struttura Mista', 'Letame bovino', 31.00);
-INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-05-20', '0002', 'Struttura Mista', 'Latte bovino', 18.20);
-INSERT INTO PRODUZIONE_ANIMALE VALUES (DATE '2026-05-20', '0002', 'Struttura Mista', 'Latte caprino', 2.20);
 
 COMMIT;
